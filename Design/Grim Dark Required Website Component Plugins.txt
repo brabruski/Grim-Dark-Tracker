@@ -1,0 +1,16 @@
+http://mmenu.frebsite.nl/ (good one for menus for mobile)
+http://www.jasny.net/bootstrap/javascript/#offcanvas (Slide in Menu)
+https://jsbin.com/seqola/2/edit?html,css,js,output (another slide menu option)
+Bootstrap 3
+AngularJS 1
+Jquery 2
+
+
+1 - Complete
+2 - Complete
+3 - Complete
+
+
+
+
+
