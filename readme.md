@@ -12,7 +12,6 @@ Excluded from this repository are the following dependencies:
 * **[Angular Material Icons](https://design.google.com/icons/)** 
 * **[Angular Material](https://material.angularjs.org/latest/)**
 * **[Angular Messages](https://docs.angularjs.org/api/ngMessages/directive/ngMessages)**
-* **[ng-file-upload](https://github.com/danialfarid/ng-file-upload)** 
 
 > For any further information regarding these dependencies, visit the respective websites above to gain insights, troubleshoot and learn about other features available. 
  

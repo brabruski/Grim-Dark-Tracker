@@ -1,0 +1,19 @@
+﻿<md-content>
+    <div layout="column" layout-align="center center" layout-padding flex>
+        <h1>Welcome to the Dice Masters Collection Tracker</h1>
+
+        <p>This App will allow you a way to keep track of your Dice Master collection as well as make Decks up for playing using your current collection.</p>
+        <p>For more information on Dice Masters, please visit the manufacturers website.</p>
+        <md-button class="md-primary" ng-href="http://wizkids.com/dicemasters/" target="_blank">Dice Master's Homepage</md-button>
+
+
+        <h3 ng-hide="currentUser">Please Register or Login to Continue.</h3>
+        <div layout="row">
+            <md-button ng-hide="currentUser" ng-href="#/login" class="md-raised md-accent">Login</md-button>
+            <md-button ng-hide="currentUser" ng-href="#/register" class="md-raised md-accent">Register</md-button>
+            <md-button ng-show="currentUser" ng-href="#/collection" class="md-raised md-accent">View Collection</md-button>
+            <md-button ng-show="currentUser" ng-href="#/decks" class="md-raised md-accent">View Decks</md-button>
+            <md-button ng-show="currentUser" ng-href="#/adddeck" class="md-raised md-accent">Build a Deck</md-button>
+        </div>        
+    </div>
+</md-content>

@@ -1,0 +1,30 @@
+﻿<div layout="column" layout-align="center center" flex>
+    <h1>Build a New Deck</h1>
+    <p>Enter in the Name of your Deck and a Description then click 'Save'</p>
+</div>
+<div layout="column" class="md-inline-form" flex layout-align="center center">
+    <form name="addform" ng-submit="addDeck()" novalidate>
+        <md-dialogue-content>
+            <div layout="column" layout-padding layout-align="center">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Deck Name</label>
+                        <input type="text" name="deckname" ng-model="deckname" />
+                    </md-input-container>
+                </div>
+                <md-input-container class="md-block" flex>
+                    <label>Description</label>
+                    <textarea rows="2" name="deckdescription" ng-model="deckdescription" ng-required="true"></textarea>
+                </md-input-container>
+            </div>
+        </md-dialogue-content>
+        <md-dialog-actions layout="row" layout-align="end center">
+            <md-button ng-href="#/decks">
+                <md-icon md-svg-icon="back" class="icwhite"></md-icon>Deck List
+            </md-button>
+            <md-button type="submit" class="md-primary md-raised" ng-disabled="addform.$invalid">
+                Add Deck
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</div>

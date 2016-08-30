@@ -1,10 +1,56 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en" ng-app="grimApp">
 <head>
-    <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Grimdark Objective Tracker</title>
+
+    <!--Frameworks / Directives-->
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/angular-material-icons/angular-material-icons.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
+    <!--Factories-->
+    <script src="js/app.js"></script>
+    <script src="Services/app_config.set.js"></script>
+    <script src="Services/authentication.fac.js"></script>
+    <script src="Services/dbservices.fac.js"></script>
+    <script src="Services/angular_material_functions.fac.js"></script>
+
+    <!--Controllers-->
+    <script src="Controllers/registration.ctr.js"></script>
+    <script src="Controllers/landing.ctr.js"></script>
+    <script src="Controllers/home.ctr.js"></script>
+    <script src="Controllers/newcard.ctr.js"></script>
+
+
+    <!--Custom Directives-->
+    <script src="Services/click_confirmation.dir.js"></script>
+    <script src="Services/password_validation.dir.js"></script>
+
+    <!--Stylesheets and Icons-->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Montserrat" rel="stylesheet">
+    <link href="node_modules/angular-material/angular-material.min.css" rel="stylesheet" />
+    <link href="node_modules/angular-material-icons/angular-material-icons.css" rel="stylesheet" />
+    <link href="css/grimdark.css" rel="stylesheet" />
+    
 </head>
 <body>
-
+    <div layout="column">
+        <nav ng-include="'Views/nav.html'" ng-cloak></nav>
+            <main flex ng-view ng-cloak>
+            </main>
+            <span flex></span>
+        <footer flex="none" ng-include="'Views/footer.html'" ng-cloak></footer>
+    </div>
 </body>
 </html>
