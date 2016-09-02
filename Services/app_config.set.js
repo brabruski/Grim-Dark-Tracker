@@ -7,7 +7,7 @@ grimApp.config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('lime')
       .accentPalette('blue')
-    .warnPalette('green');
+    .warnPalette('red');
 });
 
 
