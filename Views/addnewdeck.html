@@ -1,0 +1,34 @@
+﻿<div layout="column" layout-align="center center" flex>
+    <h1>Build a New Tactical Deck</h1>
+    <p>Enter in the Name of the Army and choose a colour for the cards</p>
+</div>
+<div layout="column" class="md-inline-form" flex layout-align="center center">
+    <form name="addform" ng-submit="addDeck()" novalidate>
+        <md-dialogue-content>
+            <div layout="column" layout-padding layout-align="center">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Deck Name</label>
+                        <input type="text" name="deckname" ng-model="deckname" />
+                    </md-input-container>
+                </div>
+                <md-input-container class="md-block" flex>
+                    <label>Card Colour</label>
+                    <md-select ng-model="cardcolour">
+                        <md-option value="red">Red</md-option>
+                        <md-option value="blue">Blue</md-option>
+                        <md-option value="green">Green</md-option>
+                        <md-option value="orange">Orange</md-option>
+                        <md-option value="yellow">Yellow</md-option>
+                        <md-option value="purple">Purple</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </md-dialogue-content>
+        <md-dialog-actions layout="row" layout-align="end center">
+            <md-button type="submit" class="md-accent md-raised" ng-disabled="addform.$invalid">
+                Add New Deck
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</div>

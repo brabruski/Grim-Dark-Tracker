@@ -1,31 +1,14 @@
 ﻿<div layout="column" layout-align="center center" layout-padding flex>
-    <h2>Dice Master Collection Tracker Registration</h2>
+    <h2>Grimdark Tracker Registration</h2>
     <p>You Will Need To Register &amp; Then Login To Access All Features.</p>
+    <p class="error">{{ message }}</p>
 </div>
 <div layout="row" class="md-inline-form" flex layout-align="center center">
     <md-content layout-padding>
         <form name="registerForm" ng-submit="register()" novalidate>
             <md-dialogue-content>
                 <div layout="column" layout-padding layout-align="center">
-                    <div layout-gt-sm="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <label>First Name</label>
-                            <md-icon md-svg-icon="user" class="md-primary"></md-icon>
-                            <input required name="fname" ng-model="user.fname">
-                            <div ng-messages="registerForm.fname.$error">
-                                <div ng-message="required">First Name required.</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <label>Last Name</label>
-                            <md-icon md-svg-icon="user" class="md-primary"></md-icon>
-                            <input required name="lname" ng-model="user.lname">
-                            <div ng-messages="registerForm.lname.$error">
-                                <div ng-message="required">Last Name required.</div>
-                            </div>
-                        </md-input-container>
-                    </div>
-                    <div layout-gt-sm="row">
+                    <div layout-gt-sm="column">
                         <md-input-container class="md-block" flex>
                             <label>Display Name</label>
                             <md-icon md-svg-icon="username" class="md-primary"></md-icon>

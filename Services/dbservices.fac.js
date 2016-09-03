@@ -4,34 +4,29 @@
 
         //create db access object & methods
         var dbObj = {
-            cardCollection: function () {
-                var collectionRef = new Firebase(Config.FIREBASE_URL + 'users/' + $rootScope.currentUser.$id + '/collection');
-                var collectionInfo = $firebaseArray(collectionRef);
-                return collectionInfo;
+            gameType: function (game) {
+                var gameRef = firebase.database().ref('gametypes/' + game);
+                var gameInfo = $firebaseArray(gameRef);
+                return gameInfo;
             },
 
-            deckCollection: function () {
-                var deckRef = new Firebase(Config.FIREBASE_URL + 'users/' + $rootScope.currentUser.$id + '/decks');
+            tactObjectives: function (deck) {
+                var objRef = firebase.database().ref('tacticaldecks/' + deck);
+                var objInfo = $firebaseArray(objRef);
+                return objInfo;
+            },
+
+            tactDeck: function () {
+                var deckRef = firebase.database().ref('tacticaldecks/');
                 var deckInfo = $firebaseArray(deckRef);
                 return deckInfo;
             },
 
-            deckCollectionContents: function (currentDeck) {
-                var deckContentRef = new Firebase(Config.FIREBASE_URL + 'users/' + $rootScope.currentUser.$id + '/decks/' + currentDeck + '/contents');
-                var deckContentInfo = $firebaseArray(deckContentRef);
-                return deckContentInfo;
-            },
-
-            deckCollectionContentQty: function (currentDeck, currentCard) {
-                var deckContentQtyRef = new Firebase(Config.FIREBASE_URL + 'users/' + $rootScope.currentUser.$id + '/decks/' + currentDeck + '/contents/' + currentCard);
-                var deckContentQtyInfo = $firebaseArray(deckContentQtyRef);
-                return deckContentQtyInfo;
-            },
-
-            collectionImages: function () {
-                var imageStoreInfo = Config.FIREBASE_IMG_URL + 'users/' + $rootScope.currentUser.$id + 'cardimages/';
-                return imageStoreInfo;
-            }
+            savedGame: function () {
+                var savedRef = firebase.database().ref('users/' + $rootScope.currentUser.$id + '/currentgame');
+                var savedInfo = $firebaseArray(savedRef);
+                return savedInfo;
+            },           
 
         };
 

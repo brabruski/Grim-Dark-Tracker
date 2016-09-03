@@ -1,5 +1,20 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="grimApp">
+<!--
+To Do List:
+    Functionality
+        Create Controllers for Adding new deck and tactical cards
+        Add decks and cards
+        create factory to handle game logic
+        create controller for new game
+        create controller for game in progress
+        create controller for loading existing game
+
+    Styling
+    Style Cards
+    Style ui feedack elements
+
+-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,8 +31,8 @@
     <script src="node_modules/angular-messages/angular-messages.min.js"></script>
 
     <!-- Firebase -->
-    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
 
     <!--Factories-->
     <script src="js/app.js"></script>
@@ -28,9 +43,12 @@
 
     <!--Controllers-->
     <script src="Controllers/registration.ctr.js"></script>
-    <script src="Controllers/landing.ctr.js"></script>
     <script src="Controllers/home.ctr.js"></script>
-    <script src="Controllers/newcard.ctr.js"></script>
+    <script src="Controllers/savegame.ctr.js"></script>
+    <script src="Controllers/newgame.ctr.js"></script>
+    <script src="Controllers/addnewdeck.ctr.js"></script>
+    <script src="Controllers/addnewcards.ctr.js"></script>
+
 
 
     <!--Custom Directives-->
@@ -42,14 +60,14 @@
     <link href="node_modules/angular-material/angular-material.min.css" rel="stylesheet" />
     <link href="node_modules/angular-material-icons/angular-material-icons.css" rel="stylesheet" />
     <link href="css/grimdark.css" rel="stylesheet" />
-    
+
 </head>
 <body>
     <div layout="column">
         <nav ng-include="'Views/nav.html'" ng-cloak></nav>
-            <main flex ng-view ng-cloak>
-            </main>
-            <span flex></span>
+        <main flex ng-view ng-cloak>
+        </main>
+        <span flex></span>
         <footer flex="none" ng-include="'Views/footer.html'" ng-cloak></footer>
     </div>
 </body>

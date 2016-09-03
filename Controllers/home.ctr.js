@@ -1,3 +1,3 @@
 ﻿grimApp.controller('HomeController', ['$scope', function ($scope) {
-    $scope.message = 'Where Dice Master Dreams Come True!';
+    $scope.message = 'Where Warhammer 40K Dreams Come True!';
 }]);

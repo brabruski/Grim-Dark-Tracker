@@ -3,12 +3,12 @@
         <md-toolbar class="navigation" md-scroll-shrink ng-if="true">
             <div class="md-toolbar-tools">
                 <md-button ng-href="#/" class="left" aria-label="Home">
-                    Dice Masters Tracker
+                    Grimdark Tracker
                 </md-button>
                 <span flex></span>
                 <md-button ng-show="currentUser" ng-href="#/profile">Hi {{ currentUser.dname }}</md-button>
-                <md-button ng-show="currentUser" ng-href="#/collection">Cards</md-button>
-                <md-button ng-show="currentUser" ng-href="#/decks">Decks</md-button>
+                <md-button ng-show="currentUser" ng-href="#/savegame">Continue Game</md-button>
+                <md-button ng-show="currentUser" ng-href="#/newgame">New Game</md-button>
                 <md-button ng-hide="currentUser" ng-href="#/login">Login</md-button>
                 <md-button ng-hide="currentUser" ng-href="#/register">Register</md-button>
                 <md-button ng-show="currentUser" ng-href="#/login" ng-click="logout()">Logout</md-button>

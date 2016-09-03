@@ -1,8 +1,4 @@
-﻿grimApp.constant('Config', {
-    FIREBASE_URL: 'https://grimdarktracker30082016.firebaseio.com/'
-});
-
-//Define Theme defaults
+﻿//Define Theme defaults
 grimApp.config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('lime')
@@ -25,5 +21,5 @@ grimApp.config(function ($mdIconProvider) {
         .icon('key', 'fonts/icons/key.svg', 24)
         .icon('email', 'fonts/icons/email.svg', 24)
         .icon('username', 'fonts/icons/account-settings-variant.svg', 24)
-        .icon('user', 'fonts/icons/account.svg', 24)
+        .icon('user', 'fonts/icons/account.svg', 24);
 });
