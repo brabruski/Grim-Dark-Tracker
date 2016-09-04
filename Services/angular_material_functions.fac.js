@@ -5,8 +5,8 @@ function ($mdToast, $mdDialog, $mdMedia) {
         //Toast Position on Screen
         toastDetails: function () {
             var last = {
-                bottom: false,
-                top: true,
+                bottom: true,
+                top: false,
                 left: false,
                 right: true
             };

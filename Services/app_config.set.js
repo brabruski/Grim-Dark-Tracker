@@ -12,6 +12,7 @@ grimApp.config(function ($mdIconProvider) {
     // Configure URLs for icons specified by [set:]id.
     $mdIconProvider
         .defaultFontSet('fa')   // This sets our default fontset className.
+        .icon('menu', 'fonts/icons/menu.svg', 24)
         .icon('delete', 'fonts/icons/delete.svg', 24)
         .icon('add', 'fonts/icons/plus-circle.svg', 24)
         .icon('aleft', 'fonts/icons/chevron-double-left.svg', 24)

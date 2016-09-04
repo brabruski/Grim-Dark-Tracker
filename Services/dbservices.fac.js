@@ -11,7 +11,7 @@
             },
 
             tactObjectives: function (deck) {
-                var objRef = firebase.database().ref('tacticaldecks/' + deck);
+                var objRef = firebase.database().ref('tacticaldecks/' + deck + '/cards');
                 var objInfo = $firebaseArray(objRef);
                 return objInfo;
             },

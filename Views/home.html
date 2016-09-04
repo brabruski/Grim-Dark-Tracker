@@ -5,14 +5,14 @@
         <p>Warhammer 40,000 (informally known as Warhammer 40K, WH40K or simply 40K) is a tabletop miniature wargame, <BR />produced by <a href="https://www.games-workshop.com/">Games Workshop</a>, set in a dystopian science fantasy universe.</p>
         <p>This App will allow you to keep track of Victory Points based on the type of 40K Warhammer battle you are playing including Tactical Objectives.</p>
         
-        <h3 ng-hide="currentUser">Please Register or Login to Continue.</h3>
+        <h3 ng-if="!currentUser">Please Register or Login to Continue.</h3>
         <div layout="row">
-            <md-button ng-hide="currentUser" ng-href="#/login" class="md-raised md-accent">Login</md-button>
-            <md-button ng-hide="currentUser" ng-href="#/register" class="md-raised md-accent">Register</md-button>
-            <md-button ng-show="currentUser" ng-href="#/savegame" class="md-raised md-accent">Continue Game</md-button>
-            <md-button ng-show="currentUser" ng-href="#/newgame" class="md-raised md-accent">New Game</md-button>
-            <md-button ng-show="currentUser" ng-href="#/addnew" class="md-raised md-accent">New Card</md-button>
-            <md-button ng-show="currentUser" ng-href="#/addnewd" class="md-raised md-accent">New Deck</md-button>
+            <md-button ng-if="!currentUser" ng-href="#/login" class="md-raised md-accent">Login</md-button>
+            <md-button ng-if="!currentUser" ng-href="#/register" class="md-raised md-accent">Register</md-button>
+            <md-button ng-if="currentUser" ng-href="#/savegame" class="md-raised md-accent">Continue Game</md-button>
+            <md-button ng-if="currentUser" ng-href="#/newgame" class="md-raised md-accent">New Game</md-button>
+            <md-button ng-if="currentUser.admin" ng-href="#/addnew" class="md-raised md-accent">New Card</md-button>
+            <md-button ng-if="currentUser.admin" ng-href="#/addnewd" class="md-raised md-accent">New Deck</md-button>
         </div>        
     </div>
 </md-content>

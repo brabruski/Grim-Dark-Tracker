@@ -4,10 +4,14 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;    
+    font-family: 'Montserrat', sans-serif;   
 }
 
 h1, h2, h3, h4, h5 {
+    font-family: 'Droid Serif', serif;
+}
+
+p {
     font-family: 'Droid Serif', serif;
 }
 
@@ -15,3 +19,6 @@ h1, h2, h3, h4, h5 {
     font-size: 0.7em;
     color: red;
 }
+
+/*Toast Styles*/
+

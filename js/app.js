@@ -1,11 +1,21 @@
 ﻿var grimApp = angular.module('grimApp', ['ngRoute', 'ngAnimate', 'ngAria', 'ngMessages', 'ngMaterial', 'ngMdIcons', 'firebase']);
 
+var config = {
+    apiKey: "AIzaSyDFD330aSVMODDPvqfBJ2ec1ydNk2jU4U4",
+    authDomain: "grimdarktracker30082016.firebaseapp.com",
+    databaseURL: "https://grimdarktracker30082016.firebaseio.com",
+    storageBucket: "grimdarktracker30082016.appspot.com"
+};
+
+firebase.initializeApp(config);
+
 //If something doesn't resolve in the route (grimApp.config.when) then run this.
-grimApp.run(['$rootScope', '$location', function ($rootScope, $location) {
-    $rootScope.$on('$routeChangeError', function (event, next, previous, error) {
+grimApp.run(["$rootScope", "$location", function ($rootScope, $location) {
+    $rootScope.$on("$routeChangeError", function (event, next, previous, error) {
+        // We can catch the error thrown when the $requireSignIn promise is rejected
+        // and redirect the user back to the home page
         if (error === "AUTH_REQUIRED") {
-            $rootScope.message = 'You need to log in to access that page';
-            $location.path('/login');
+            $location.path("/home");
         }
     });
 }]);
@@ -26,22 +36,48 @@ grimApp.config(['$routeProvider', function ($routeProvider) {
     }).
         when('/newgame', {
             templateUrl: 'Views/newgame.html',
-            controller: 'NewGameController'
+            controller: 'NewGameController',
+            resolve: {
+                "currentAuth": ['Auth', function (Auth) {
+                    return Auth.$requireSignIn();
+                }]
+            }
         }).
         when('/savegame', {
             templateUrl: 'Views/savegame.html',
-            controller: 'SavedGameController'
+            controller: 'SavedGameController',
+            resolve: {
+                "currentAuth": ['Auth', function (Auth) {
+                    return Auth.$requireSignIn();
+                }]
+            }
         }).
         when('/addnew', {
             templateUrl: 'Views/addnewcard.html',
-            controller: 'AddCardController'
+            controller: 'AddCardController',
+            resolve: {
+                "currentAuth": ['Auth', function (Auth) {
+                    return Auth.$requireSignIn();
+                }]
+            }
         }).
         when('/addnewd', {
             templateUrl: 'Views/addnewdeck.html',
-            controller: 'AddDeckController'
+            controller: 'AddDeckController',
+            resolve: {
+                "currentAuth": ['Auth', function (Auth) {
+                    return Auth.$requireSignIn();
+                }]
+            }
         }).
    otherwise({
        redirectTo: '/home'
    });
 }]);
+
+grimApp.factory("Auth", ["$firebaseAuth",
+  function ($firebaseAuth) {
+      return $firebaseAuth();
+  }
+]);
 

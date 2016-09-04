@@ -12,8 +12,6 @@ grimApp.factory('Authentication',
     ['$rootScope', '$firebaseAuth', '$firebaseObject', '$location', 'Config',
     function ($rootScope, $firebaseAuth, $firebaseObject, $location, Config) {
 
-        firebase.initializeApp(Config.FIREBASE_CONFIG);
-
         var ref = firebase.database().ref();
         var auth = $firebaseAuth();
 
@@ -55,7 +53,8 @@ grimApp.factory('Authentication',
                             date: firebase.database.ServerValue.TIMESTAMP,
                             regUser: regUser.uid,
                             dname: user.displayname,
-                            email: user.email
+                            email: user.email,
+                            admin: false
                         });
                     authObj.login(user);
 
