@@ -1,0 +1,127 @@
+﻿<div layout="row" layout-align="center center" flex>
+    <h2>Add A Tactical Objective Card To The Default Deck</h2>
+</div>
+<div layout="row" class="md-inline-form" flex layout-align="center center">
+    <form name="addcardform" ng-submit="addCard()">
+        <md-dialogue-content>
+            <div layout="column" layout-padding layout-align="center">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Card Name</label>
+                        <input type="text" name="cardname" ng-model="cardname" ng-required="true" />
+                    </md-input-container>
+                </div>
+                <md-input-container class="md-block" flex>
+                    <label>Description</label>
+                    <textarea rows="2" name="carddescription" ng-model="carddescription" ng-required="true"></textarea>
+                </md-input-container>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Card Number</label>
+                        <md-select ng-model="cnumber">
+                            <md-option ng-repeat="cNum in cardNumber" value="{{cNum}}">{{cNum}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Card Type</label>
+                        <input type="text" name="ctype" ng-model="ctype" ng-required="true" />
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <h3>Tactical Objective Victory Points</h3>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex>
+                        <label>Multiple Reward Options</label>
+                        <md-select ng-model="multipoint">
+                            <md-option value="false">No</md-option>
+                            <md-option value="true">Yes</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex>
+                        <label>Minimum Victory Points</label>
+                        <md-select ng-model="minpointSelected" ng-model-options="{trackBy: '$value'}" aria-label="Minimum Victory Points">
+                            <md-option ng-repeat="minNum in minpoints" value="{{minNum}}">{{minNum}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex>
+                        <label>Maximum Victory Points</label>
+                        <md-select ng-model="maxpointSelected" ng-model-options="{trackBy: '$value'}" aria-label="Maximum Victory Points">
+                            <md-option ng-repeat="maxNum in maxpoints" value="{{maxNum}}">{{maxNum}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <h3>Tactical Objective Requirements For Completion</h3>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex>
+                        <label>Flyers - Enemy</label>
+                        <md-select ng-model="fly">
+                            <md-option value="false">No</md-option>
+                            <md-option value="true">Yes</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex>
+                        <label>Fortification - Enemy</label>
+                        <md-select ng-model="fort">
+                            <md-option value="false">No</md-option>
+                            <md-option value="true">Yes</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex>
+                        <label>Mysterious Objective</label>
+                        <md-select ng-model="mystobj">
+                            <md-option value="false">No</md-option>
+                            <md-option value="true">Yes</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex>
+                        <label>Vehicles - Enemy</label>
+                        <md-select ng-model="veh">
+                            <md-option value="false">No</md-option>
+                            <md-option value="true">Yes</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex>
+                        <label>Psyker - Enemy</label>
+                        <md-select ng-model="psykene">
+                            <md-option value="false">No</md-option>
+                            <md-option value="true">Yes</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex>
+                        <label>Psyker - Friendly</label>
+                        <md-select ng-model="psykmy">
+                            <md-option value="false">No</md-option>
+                            <md-option value="true">Yes</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+            </div>
+        </md-dialogue-content>
+        <md-dialog-actions layout="row" layout-align="end center">
+            <md-button href="#/home">
+                Cancel
+            </md-button>
+            <md-button type="submit" class="md-primary md-raised" ng-disabled="addcardform.$invalid">
+                Add Card
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</div>
+
+
+
+

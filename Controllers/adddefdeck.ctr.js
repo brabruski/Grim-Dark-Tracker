@@ -1,7 +1,7 @@
-﻿grimApp.controller('AddCardController', ['$scope', '$rootScope', '$firebaseAuth', '$firebaseArray', 'Config', 'DBServices', 'MaterialFunc', 'NewContentFactory', '$timeout',
+﻿grimApp.controller('AddDefaultDeckController', ['$scope', '$rootScope', '$firebaseAuth', '$firebaseArray', 'Config', 'DBServices', 'MaterialFunc', 'NewContentFactory', '$timeout',
     function ($scope, $rootScope, $firebaseAuth, $firebaseArray, Config, DBServices, MaterialFunc, NewContentFactory, $timeout) {
 
-        var deckDetails = DBServices.tactDeck();
+        var deckDetails = DBServices.defaultTactDeck();
 
         deckDetails.$loaded().then(function (data) {
             $scope.decks = deckDetails;
@@ -23,33 +23,29 @@
         $scope.cardNumber = NewContentFactory.cardNumbers();
 
         //function to add to firebase
-        $scope.addCard = function (deckToAddTo) {
-            var currentDeck = deckToAddTo.$id;
-            var allCardDetails = DBServices.tactObjectives(currentDeck);
+        $scope.addCard = function () {
 
-            allCardDetails.$loaded().then(function () {
-                
-                var setId = NewContentFactory.createId(allCardDetails);
+            var setId = NewContentFactory.createId(deckDetails);
 
-                var cardDetails = {
-                    id: setId,
-                    cardname: $scope.cardname,
-                    carddescription: $scope.carddescription,
-                    cnumber: $scope.cnumber,
-                    ctype: $scope.ctype,
-                    multipoint: $scope.multipoint,
-                    minpoint: $scope.minpointSelected,
-                    maxpoint: $scope.maxpointSelected,
-                    fly: $scope.fly,
-                    fort: $scope.fort,
-                    mystobj: $scope.mystobj,
-                    veh: $scope.veh,
-                    psykene: $scope.psykene,
-                    psykmy: $scope.psykmy,
-                    date: firebase.database.ServerValue.TIMESTAMP
-                };
+            var cardDetails = {
+                id: setId,
+                cardname: $scope.cardname,
+                carddescription: $scope.carddescription,
+                cnumber: $scope.cnumber,
+                ctype: $scope.ctype,
+                multipoint: $scope.multipoint,
+                minpoint: $scope.minpointSelected,
+                maxpoint: $scope.maxpointSelected,
+                fly: $scope.fly,
+                fort: $scope.fort,
+                mystobj: $scope.mystobj,
+                veh: $scope.veh,
+                psykene: $scope.psykene,
+                psykmy: $scope.psykmy,
+                date: firebase.database.ServerValue.TIMESTAMP
+            };
 
-                allCardDetails.$add(cardDetails)
+            deckDetails.$add(cardDetails)
                     .then(function () {
                         //after submitting, clears the fields
                         $scope.cardname = '';
@@ -68,7 +64,6 @@
                         var addSuccessMsg = "Card Added Successfully!";
                         $scope.showSimpleToast(addSuccessMsg);
                     });
-            }); //end loaded function
         }; //end add function
 
         //toast functions

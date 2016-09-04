@@ -22,6 +22,12 @@
                 return deckInfo;
             },
 
+            defaultTactDeck: function () {
+                var defDeckRef = firebase.database().ref('defaultdeck/');
+                var defDeckInfo = $firebaseArray(defDeckRef);
+                return defDeckInfo;
+            },
+
             savedGame: function () {
                 var savedRef = firebase.database().ref('users/' + $rootScope.currentUser.$id + '/currentgame');
                 var savedInfo = $firebaseArray(savedRef);

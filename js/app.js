@@ -70,6 +70,15 @@ grimApp.config(['$routeProvider', function ($routeProvider) {
                 }]
             }
         }).
+        when('/adddefd', {
+            templateUrl: 'Views/adddefaultdeck.html',
+            controller: 'AddDefaultDeckController',
+            resolve: {
+                "currentAuth": ['Auth', function (Auth) {
+                    return Auth.$requireSignIn();
+                }]
+            }
+        }).
    otherwise({
        redirectTo: '/home'
    });
