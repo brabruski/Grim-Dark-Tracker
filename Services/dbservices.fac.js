@@ -4,8 +4,8 @@
 
         //create db access object & methods
         var dbObj = {
-            gameType: function (game) {
-                var gameRef = firebase.database().ref('gametypes/' + game);
+            gameType: function () {
+                var gameRef = firebase.database().ref('battletypes/');
                 var gameInfo = $firebaseArray(gameRef);
                 return gameInfo;
             },
@@ -32,7 +32,7 @@
                 var savedRef = firebase.database().ref('users/' + $rootScope.currentUser.$id + '/currentgame');
                 var savedInfo = $firebaseArray(savedRef);
                 return savedInfo;
-            },           
+            }           
 
         };
 

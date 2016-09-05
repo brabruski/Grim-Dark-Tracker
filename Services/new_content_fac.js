@@ -30,6 +30,19 @@
                 return topId;
             },
 
+            fillValue: function (maxLength, arrayObj) {
+                if (arrayObj.length !== maxLength) {
+                    var newLength = maxLength - arrayObj.length;
+                    var valueDef = arrayObj[0].value;
+                    for (i = 0; i < newLength; i++) {
+                        arrayObj.push({ value: valueDef });
+                    }
+                }
+                return arrayObj;
+            },
+
+            //Old Factory Methods to be deleted below
+
             //check if cards exist
             existArray: function (cardSource, deckCardSource) {
                 var doesExist = [];
@@ -82,7 +95,7 @@
                     prevItem = Number(itemId) - 1;
                 } else {
                     prevItem = item.length - 1;
-                };
+                }
                 return prevItem;
             },
 
@@ -92,15 +105,12 @@
                     nextItem = Number(itemId) + 1;
                 } else {
                     nextItem = 0;
-                };
+                }
                 return nextItem;
             },
 
             //Set all Energy Types Available
-            energyOptions: function () {
-                var energyTypes = ['Fist', 'Lightning', 'Mask', 'Shield', 'Generic'];
-                return energyTypes;
-            },
+ 
 
             maxDice: function (maxDice) {
                 //Create an Array of Option Values
@@ -131,6 +141,6 @@
                 }
                 return isAdded;
             }
-        }
+        };
         return ncObj;
     }]);

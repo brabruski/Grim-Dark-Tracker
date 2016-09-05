@@ -79,6 +79,15 @@ grimApp.config(['$routeProvider', function ($routeProvider) {
                 }]
             }
         }).
+        when('/addnewbat', {
+            templateUrl: 'Views/addnewbattletype.html',
+            controller: 'AddBattleController',
+            resolve: {
+                "currentAuth": ['Auth', function (Auth) {
+                    return Auth.$requireSignIn();
+                }]
+            }
+        }).
    otherwise({
        redirectTo: '/home'
    });

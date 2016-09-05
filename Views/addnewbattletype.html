@@ -1,0 +1,142 @@
+﻿<div layout="row" layout-align="center center" flex>
+    <h2>Add A New Battle Mode</h2>
+</div>
+<div layout="row" flex layout-align="center center">
+    <form name="addbattleform" ng-submit="addBattle()">
+        <md-dialogue-content>
+            <div layout="column" layout-padding layout-align="center">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Battle Name</label>
+                        <input type="text" name="cardname" ng-model="battlename" ng-required="true" />
+                    </md-input-container>
+                    <md-input-container class="md-block" flex>
+                        <label>Battle Type</label>
+                        <md-select ng-model="battleTypeSelected">
+                            <md-option value="Eternal War">Eternal War</md-option>
+                            <md-option value="Maelstrom of War">Maelstrom of War</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <md-input-container class="md-block" flex>
+                    <label>Battle Start Description</label>
+                    <textarea rows="2" name="battledescription" ng-model="battledescription" ng-required="true"></textarea>
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <label>Battle Win Conditions</label>
+                    <textarea rows="2" name="battleconditions" ng-model="battleconditions" ng-required="true"></textarea>
+                </md-input-container>
+                <div layout-gt-sm="row">
+                    <h3>Objective Markers</h3>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Min. Objective Quantity</label>
+                        <md-select ng-model="objminSelected">
+                            <md-option ng-repeat="oNum in minopoints" value="{{oNum}}">{{oNum}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Max. Objective Quantity</label>
+                        <md-select ng-model="objmaxSelected">
+                            <md-option ng-repeat="obNum in maxopoints" value="{{obNum}}">{{obNum}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <p>If all Objective values are the same, just enter the value in once.</p>
+                <div layout-gt-sm="row" layout-wrap>
+                    <md-input-container class="md-block" flex-gt-sm ng-repeat="value in objectiveValues" ng-value="value.value">
+                        <label>Objective Value</label>
+                        <input type="number" name="objvalue" ng-model="value.value" min="0" max="6" required>
+                    </md-input-container>
+                    <div layout-gt-sm="column">
+                        <md-button ng-click="addValue()" class="md-icon-button md-accent">
+                            <md-tooltip md-direction="top">Add Another Value Option</md-tooltip>
+                            <md-icon md-svg-icon="plus"></md-icon>
+                        </md-button>
+                        <md-button ng-click="removeValue()" class="md-icon-button md-warn">
+                            <md-tooltip md-direction="top">Remove A Value Option</md-tooltip>
+                            <md-icon md-svg-icon="minus"></md-icon>
+                        </md-button>
+                    </div>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex>
+                        <label>Mystery Objectives</label>
+                        <md-select ng-model="mystobjSelected">
+                            <md-option value="false">No</md-option>
+                            <md-option value="true">Yes</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <h3>Tactical Objective Rules</h3>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Starting Hand</label>
+                        <input type="number" name="tstart" ng-model="tstart" required>
+                        <div ng-messages="addbattleform.tstart.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="type">Please enter in a number only.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Maximum Hand</label>
+                        <input type="number" name="tmax" ng-model="tmax" required>
+                        <div ng-messages="addbattleform.tmax.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="type">Please enter in a number only.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Draw Each Round</label>
+                        <input type="number" name="tdraw" ng-model="tdraw" required>
+                        <div ng-messages="addbattleform.tdraw.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="type">Please enter in a number only.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Discards Per Round</label>
+                        <input type="number" name="tdiscard" ng-model="tdiscard" required>
+                        <div ng-messages="addbattleform.tdiscard.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="type">Please enter in a number only.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <h3>Kill Points</h3>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex>
+                        <label>Kill Point Victory Points</label>
+                        <md-select ng-model="kpointSelected">
+                            <md-option value="false">No</md-option>
+                            <md-option value="true">Yes</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Kill Point Unit Name</label>
+                        <input type="text" name="kpname" ng-model="kpname" ng-required="true" />
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialogue-content>
+        <md-dialog-actions layout="row" layout-align="end center">
+            <md-button href="#/home">
+                Cancel
+            </md-button>
+            <md-button type="submit" class="md-primary md-raised" ng-disabled="addbattleform.$invalid">
+                Save
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</div>
+
+
+
+

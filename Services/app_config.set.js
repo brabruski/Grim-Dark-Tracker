@@ -22,5 +22,7 @@ grimApp.config(function ($mdIconProvider) {
         .icon('key', 'fonts/icons/key.svg', 24)
         .icon('email', 'fonts/icons/email.svg', 24)
         .icon('username', 'fonts/icons/account-settings-variant.svg', 24)
-        .icon('user', 'fonts/icons/account.svg', 24);
+        .icon('user', 'fonts/icons/account.svg', 24)
+        .icon('plus', 'fonts/icons/plus-box.svg', 24)
+        .icon('minus', 'fonts/icons/minus-box.svg', 24);
 });

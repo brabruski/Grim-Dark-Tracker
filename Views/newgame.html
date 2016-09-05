@@ -1,5 +1,72 @@
-﻿<md-content>
-    <div layout="column" layout-align="center center" layout-padding flex>
-        <h1>New Game Generator</h1>
-    </div>
-</md-content>
+﻿<div layout="row" layout-align="center center" flex>
+    <h2>New Battle Generator</h2>
+</div>
+<div layout="row" class="md-inline-form" flex layout-align="center center">
+    <form name="createbattleform" ng-submit="addGame(gameSelected)">
+        <md-dialogue-content>
+            <div layout="column" layout-padding layout-align="center">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex>
+                        <label>Mission:</label>
+                        <md-select ng-model="gameSelected" ng-model-options="{trackBy: '$value.name'}" aria-label="Battle Selection">
+                            <md-option ng-value="game" ng-repeat="game in games" aria-label="{{game.name}}">{{ game.type }} {{ game.name }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex>
+                        <label>Army:</label>
+                        <md-select ng-model="armySelected" ng-model-options="{trackBy: '$value.deckname'}" aria-label="Army Selection">
+                            <md-option ng-value="army" ng-repeat="army in armyDeck" aria-label="{{army.deckname}}">{{ army.deckname }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div layout-gt-sm="row" flex="60">
+                    <fieldset class="standard">
+                        <legend>Select All Options That Don't apply To This Battle</legend>
+                        <div layout-wrap layout-gt-sm="row" flex="70">
+                            <div flex-gt-sm="50">
+                                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                                    Flyers - Enemy
+                                </md-checkbox>
+                            </div>
+                            <div flex-gt-sm="50">
+                                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                                    Fortifications - Enemy
+                                </md-checkbox>
+                            </div>
+                            <div flex-gt-sm="50">
+                                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                                    Mysterious Objectives
+                                </md-checkbox>
+                            </div>
+                            <div flex-gt-sm="50">
+                                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                                    Vehicles - Enemy
+                                </md-checkbox>
+                            </div>
+                            <div flex-gt-sm="50">
+                                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                                    Psykers / Sorcerers - Enemy
+                                </md-checkbox>
+                            </div>
+                            <div flex-gt-sm="50">
+                                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                                    Psykers / Sorcerers - Friend
+                                </md-checkbox>
+                            </div>
+                        </div>
+                    </fieldset>
+                    </div>
+                    </div>
+        </md-dialogue-content>
+        <md-dialog-actions layout="row" layout-align="end center">
+            <md-button href="#/home">
+                Cancel
+            </md-button>
+            <md-button type="submit" class="md-primary md-raised" ng-disabled="createbattleform.$invalid">
+                Create Battle
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</div>

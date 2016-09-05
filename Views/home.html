@@ -9,7 +9,7 @@
         <div layout="row">
             <md-button ng-if="!currentUser" ng-href="#/login" class="md-raised md-accent">Login</md-button>
             <md-button ng-if="!currentUser" ng-href="#/register" class="md-raised md-accent">Register</md-button>
-            <md-button ng-if="currentUser" ng-href="#/savegame" class="md-raised md-accent">Continue Game</md-button>
+            <md-button ng-if="currentUser.inprog" ng-href="#/savegame" class="md-raised md-accent">Continue Game</md-button>
             <md-button ng-if="currentUser" ng-href="#/newgame" class="md-raised md-accent">New Game</md-button>
             <md-button ng-if="currentUser.admin" ng-href="#/addnew" class="md-raised md-accent">New Card</md-button>
             <md-button ng-if="currentUser.admin" ng-href="#/addnewd" class="md-raised md-accent">New Deck</md-button>

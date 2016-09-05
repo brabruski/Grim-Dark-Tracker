@@ -1,0 +1,58 @@
+﻿<div>
+    <form ng-submit="submit()" ng-controller="sampleAppCtrl" ng-cloak>
+
+        <p>Selected Value: <span class="radioValue">{{ data.group2 }}</span></p>
+
+        <md-radio-group ng-model="data.group2" class="md-primary">
+
+            <md-radio-button ng-repeat="d in radioData" ng-value="d.value" ng-class="{'md-align-top-left': $index==1}">
+                {{ d.label }}
+            </md-radio-button>
+
+        </md-radio-group>
+
+        <p>
+            <md-button class="md-raised" ng-click="addItem()" type="button">Add</md-button>
+            <md-button class="md-raised" ng-click="removeItem()" type="button">Remove</md-button>
+        </p>
+</form>
+</div>
+
+
+
+
+
+angular
+  .module('radioDemo1', ['ngMaterial'])
+  .controller('sampleAppCtrl', function($scope) {
+
+    $scope.data = {
+      group1 : 'Banana',
+      group2 : '2',
+      group3 : 'avatar-1'
+    };
+
+  $scope.radioData = [
+      { label: '1', value: 1 },
+      { label: '2', value: 2 },
+      { label: '3', value: 3 },
+      { label: '4', value: 4 }
+    ];
+
+    $scope.submit = function() {
+      alert('submit');
+    };
+
+    $scope.addItem = function() {
+      var r = Math.ceil(Math.random() * 1000);
+      $scope.radioData.push({ label: r, value: r });
+    };
+
+    $scope.removeItem = function() {
+      $scope.radioData.pop();
+    };
+
+  })
+  .config(function($mdIconProvider) {
+    $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
+  });
