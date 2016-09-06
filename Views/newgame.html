@@ -2,16 +2,20 @@
     <h2>New Battle Generator</h2>
 </div>
 <div layout="row" class="md-inline-form" flex layout-align="center center">
-    <form name="createbattleform" ng-submit="addGame(gameSelected)">
+    <form name="createbattleform" ng-submit="addGame()">
         <md-dialogue-content>
             <div layout="column" layout-padding layout-align="center">
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex>
                         <label>Mission:</label>
-                        <md-select ng-model="gameSelected" ng-model-options="{trackBy: '$value.name'}" aria-label="Battle Selection">
-                            <md-option ng-value="game" ng-repeat="game in games" aria-label="{{game.name}}">{{ game.type }} {{ game.name }}</md-option>
+                        <md-select ng-model="gameSelected" ng-model-options="{trackBy: '$value.name'}" aria-label="Battle Selection" >
+                            <md-option ng-value="game" ng-repeat="game in games" aria-label="{{game.name}}">{{ game.type }} - {{ game.name }}</md-option>
                         </md-select>
                     </md-input-container>
+                    <md-button class="md-accent md-fab" ng-click="generateMission()">
+                        <md-tooltip md-direction="top">Roll for Random Mission</md-tooltip>
+                        <md-icon md-svg-icon="droll"></md-icon>
+                    </md-button>
                 </div>
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex>
@@ -26,39 +30,39 @@
                         <legend>Select All Options That Don't apply To This Battle</legend>
                         <div layout-wrap layout-gt-sm="row" flex="70">
                             <div flex-gt-sm="50">
-                                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-                                    Flyers - Enemy
-                                </md-checkbox>
-                            </div>
-                            <div flex-gt-sm="50">
-                                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
-                                    Fortifications - Enemy
-                                </md-checkbox>
-                            </div>
-                            <div flex-gt-sm="50">
-                                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                                <md-checkbox ng-model="options.mysteriousobj" aria-label="Checkbox Mysterious Objectives">
                                     Mysterious Objectives
                                 </md-checkbox>
                             </div>
                             <div flex-gt-sm="50">
-                                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                                <md-checkbox ng-model="options.flyers" aria-label="Checkbox Flyer">
+                                    Flyers - Enemy
+                                </md-checkbox>
+                            </div>
+                            <div flex-gt-sm="50">
+                                <md-checkbox ng-model="options.fortification" aria-label="Checkbox Fortification">
+                                    Fortifications - Enemy
+                                </md-checkbox>
+                            </div>
+                            <div flex-gt-sm="50">
+                                <md-checkbox ng-model="options.vehicles" aria-label="Checkbox Vehicles">
                                     Vehicles - Enemy
                                 </md-checkbox>
                             </div>
                             <div flex-gt-sm="50">
-                                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                                <md-checkbox ng-model="options.psykersene" aria-label="Checkbox Enemy Psykers">
                                     Psykers / Sorcerers - Enemy
                                 </md-checkbox>
                             </div>
                             <div flex-gt-sm="50">
-                                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                                <md-checkbox ng-model="options.psykersfriend" aria-label="Checkbox Friendly Psykers">
                                     Psykers / Sorcerers - Friend
                                 </md-checkbox>
                             </div>
                         </div>
                     </fieldset>
-                    </div>
-                    </div>
+                </div>
+            </div>
         </md-dialogue-content>
         <md-dialog-actions layout="row" layout-align="end center">
             <md-button href="#/home">

@@ -43,15 +43,6 @@ grimApp.config(['$routeProvider', function ($routeProvider) {
                 }]
             }
         }).
-        when('/savegame', {
-            templateUrl: 'Views/savegame.html',
-            controller: 'SavedGameController',
-            resolve: {
-                "currentAuth": ['Auth', function (Auth) {
-                    return Auth.$requireSignIn();
-                }]
-            }
-        }).
         when('/addnew', {
             templateUrl: 'Views/addnewcard.html',
             controller: 'AddCardController',
@@ -82,6 +73,15 @@ grimApp.config(['$routeProvider', function ($routeProvider) {
         when('/addnewbat', {
             templateUrl: 'Views/addnewbattletype.html',
             controller: 'AddBattleController',
+            resolve: {
+                "currentAuth": ['Auth', function (Auth) {
+                    return Auth.$requireSignIn();
+                }]
+            }
+        }).
+        when('/battle', {
+            templateUrl: 'Views/battlescreen.html',
+            controller: 'BattleController',
             resolve: {
                 "currentAuth": ['Auth', function (Auth) {
                     return Auth.$requireSignIn();

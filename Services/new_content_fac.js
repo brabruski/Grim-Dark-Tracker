@@ -41,6 +41,61 @@
                 return arrayObj;
             },
 
+            generateItem: function (dbArray) {
+                var randomItem = dbArray[Math.floor(Math.random() * dbArray.length)];
+                return randomItem;
+            },
+
+            createBattleDeck: function (armyDeck, defDeck) {
+                var newDeck = [];
+                armyNew = armyDeck.cards;
+                for (var prop in armyNew) {
+                    newDeck.push(armyNew[prop]);
+                }
+                for (i = 0; i < defDeck.length; i++) {
+                    newDeck.push(defDeck[i]);
+                }
+                return newDeck;
+            },
+
+            cycleDeck: function (deck, prop) {
+                var spliceArray = [];
+                for (i = 0; i < deck.length; i++) {
+                    if (deck[i][prop]) {
+                        spliceArray.push(i);
+                    }
+                }
+
+                for (i = spliceArray.length - 1; i >= 0; i--) {
+                    deck.splice(spliceArray[i], 1);
+                }
+
+                return deck;
+            },
+
+            applyOptions: function (deck, options) {
+                var deckFiltered = deck;
+                if (options.mysteriousobj === true) {
+                    deckFiltered = ncObj.cycleDeck(deckFiltered, 'mystobj');
+                }
+                if (options.flyers === true) {
+                    deckFiltered = ncObj.cycleDeck(deckFiltered, 'fly');
+                }
+                if (options.fortification === true) {
+                    deckFiltered = ncObj.cycleDeck(deckFiltered, 'fort');
+                }
+                if (options.vehicles === true) {
+                    deckFiltered = ncObj.cycleDeck(deckFiltered, 'veh');
+                }
+                if (options.psykersene === true) {
+                    deckFiltered = ncObj.cycleDeck(deckFiltered, 'psykene');
+                }
+                if (options.psykersfriend === true) {
+                    deckFiltered = ncObj.cycleDeck(deckFiltered, 'psykmy');
+                }
+                return deckFiltered;
+            },
+
             //Old Factory Methods to be deleted below
 
             //check if cards exist
@@ -110,7 +165,7 @@
             },
 
             //Set all Energy Types Available
- 
+
 
             maxDice: function (maxDice) {
                 //Create an Array of Option Values

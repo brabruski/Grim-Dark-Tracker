@@ -1,4 +1,334 @@
 {
+  "battletypes" : {
+    "-KQuPH7XECwqYqJFlzGE" : {
+      "date" : 1473080009539,
+      "descrip" : "Generate D3 +2 Objective Markers.",
+      "id" : 1001,
+      "kp" : "false",
+      "kpname" : "None",
+      "name" : "Crusade",
+      "omystery" : "true",
+      "oqtymax" : "5",
+      "oqtymin" : "3",
+      "ovalues" : [ {
+        "value" : 3
+      }, {
+        "value" : 3
+      }, {
+        "value" : 3
+      }, {
+        "value" : 3
+      }, {
+        "value" : 3
+      } ],
+      "tdiscard" : 0,
+      "tdraw" : 0,
+      "tmax" : 0,
+      "tstart" : 0,
+      "type" : "Eternal War",
+      "wincond" : "At the end of the game, each Objective Marker is worth 3 Victory Points to the player who controls it."
+    },
+    "-KQuQTbz5f_o-DuEpedh" : {
+      "date" : 1473080323067,
+      "descrip" : "No Objective Markers are used in this Scenario.",
+      "id" : 1002,
+      "kp" : "true",
+      "kpname" : "Any Unit",
+      "name" : "Purge the Alien",
+      "omystery" : "false",
+      "oqtymax" : 0,
+      "oqtymin" : 0,
+      "ovalues" : [ {
+        "value" : 0
+      } ],
+      "tdiscard" : 0,
+      "tdraw" : 0,
+      "tmax" : 0,
+      "tstart" : 0,
+      "type" : "Eternal War",
+      "wincond" : "Each player is awarded 1 Victory Point for every unit destroyed. Units not on the board or who are Falling Back at the end of the game, count as destroyed for the purpose of this mission. Independent Characters and Dedicated Transports are counted as individual units and grant Victory Points if they are destroyed."
+    },
+    "-KQuSTnsIhRwTxltSECD" : {
+      "date" : 1473080848100,
+      "descrip" : "Set up 6 Objective Markers randomly with the specified values hidden underneath each Marker. The values to be used are 1, 2, 2, 3, 3 & 4. No player should see the value under Objective Markers.",
+      "id" : 1003,
+      "kp" : "true",
+      "kpname" : "Fast Attack",
+      "name" : "The Scouring",
+      "omystery" : "true",
+      "oqtymax" : "6",
+      "oqtymin" : "6",
+      "ovalues" : [ {
+        "value" : 1
+      }, {
+        "value" : 2
+      }, {
+        "value" : 2
+      }, {
+        "value" : 3
+      }, {
+        "value" : 3
+      }, {
+        "value" : 4
+      } ],
+      "tdiscard" : 0,
+      "tdraw" : 0,
+      "tmax" : 0,
+      "tstart" : 0,
+      "type" : "Eternal War",
+      "wincond" : "At the end of the game, each Objective Marker grants Victory Points to the player controlling it based on the number of Victory Points found on the Objective Marker. Players gain 1 Victory Point for each enemy Fast Attack unit that has been completely destroyed. Units that are Falling Back or who are not on the board at the end of the game, count as destroyed for the purpose of this mission."
+    },
+    "-KQuTGGG1d93DtHO528O" : {
+      "date" : 1473081054762,
+      "descrip" : "Generate D3 + 2 Objective Markers to be placed as per the standard rules.",
+      "id" : 1004,
+      "kp" : "true",
+      "kpname" : "Heavy Support",
+      "name" : "Big Guns Never Tire",
+      "omystery" : "true",
+      "oqtymax" : "5",
+      "oqtymin" : "3",
+      "ovalues" : [ {
+        "value" : 3
+      }, {
+        "value" : 3
+      }, {
+        "value" : 3
+      }, {
+        "value" : 3
+      }, {
+        "value" : 3
+      } ],
+      "tdiscard" : 0,
+      "tdraw" : 0,
+      "tmax" : 0,
+      "tstart" : 0,
+      "type" : "Eternal War",
+      "wincond" : "At the end of the game, each Objective Marker is worth 3 Victory Points to the player who controls it. Players gain 1 Victory Point for each enemy Heavy Support unit that has been completely destroyed. Units that are Falling Back or who are not on the board at the end of the game, count as destroyed for the purpose of this mission."
+    },
+    "-KQuZf7C0sF_VYFr2C1x" : {
+      "date" : 1473082733570,
+      "descrip" : "Set up 2 Objective Markers.",
+      "id" : 1005,
+      "kp" : false,
+      "kpname" : "None",
+      "name" : "The Emperor's Will",
+      "omystery" : "true",
+      "oqtymax" : "2",
+      "oqtymin" : "2",
+      "ovalues" : [ {
+        "value" : 3
+      }, {
+        "value" : 3
+      } ],
+      "tdiscard" : 0,
+      "tdraw" : 0,
+      "tmax" : 0,
+      "tstart" : 0,
+      "type" : "Eternal War",
+      "wincond" : "At the end of the game, each Objective Marker is worth 3 Victory Points to the player who controls it."
+    },
+    "-KQu_KlG5azLoHCou4gZ" : {
+      "date" : 1473082908232,
+      "descrip" : "Set up 1 Objective Marker. The Objective Marker represents the Relic. Check Game Rules for further information and game mechanics on the Relic.",
+      "id" : 1006,
+      "kp" : false,
+      "kpname" : "None",
+      "name" : "The Relic",
+      "omystery" : "false",
+      "oqtymax" : 1,
+      "oqtymin" : 1,
+      "ovalues" : [ {
+        "value" : 3
+      } ],
+      "tdiscard" : 0,
+      "tdraw" : 0,
+      "tmax" : 0,
+      "tstart" : 0,
+      "type" : "Eternal War",
+      "wincond" : "At the end of the game, the Objective Marker (Relic) is worth 3 Victory Points to the player who is controlling it."
+    },
+    "-KQu_uKq-Nl9aE19bpeX" : {
+      "date" : 1473083058035,
+      "descrip" : "Set up 6 Objective Markers. Draw Tactical Objectives at the beginning of your first turn.",
+      "id" : 1007,
+      "kp" : false,
+      "kpname" : "None",
+      "name" : "Cleanse and Control",
+      "omystery" : "true",
+      "oqtymax" : "6",
+      "oqtymin" : "6",
+      "ovalues" : [ {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      } ],
+      "tdiscard" : 0,
+      "tdraw" : 0,
+      "tmax" : 3,
+      "tstart" : 3,
+      "type" : "Maelstrom of War",
+      "wincond" : "Achieve as many Tactical Objectives as possible. If a player has less than 3 Tactical Objectives at the start of their turn, generate a number of Tactical Objectives until they have 3 Active Tactical Objectives."
+    },
+    "-KQuaF6Fa0ZN7LThKLs3" : {
+      "date" : 1473083147218,
+      "descrip" : "Set up 6 Objective Markers. Draw Tactical Objectives at the beginning of your first turn.",
+      "id" : "1008",
+      "kp" : false,
+      "kpname" : "None",
+      "name" : "Contact Lost",
+      "omystery" : "true",
+      "oqtymax" : "6",
+      "oqtymin" : "6",
+      "ovalues" : [ {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      } ],
+      "tdiscard" : 0,
+      "tdraw" : 0,
+      "tmax" : 6,
+      "tstart" : 1,
+      "type" : "Maelstrom of War",
+      "wincond" : "Achieve as many Tactical Objectives as possible. If a player has fewer than 6 Active Tactical Objectives at the start of their turn, generate a number of Tactical Objectives based on the Objective Markers the player controls. If the player controls no Objective Markers, they may not generate any new Tactical Objectives."
+    },
+    "-KQubByGiQ1mvMTWc15X" : {
+      "date" : 1473083397088,
+      "descrip" : "Set up 6 Objective Markers. Draw Tactical Objectives at the beginning of your first turn.",
+      "id" : 1009,
+      "kp" : false,
+      "kpname" : "None",
+      "name" : "Tactical Escalation",
+      "omystery" : "true",
+      "oqtymax" : "6",
+      "oqtymin" : "6",
+      "ovalues" : [ {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      } ],
+      "tdiscard" : 0,
+      "tdraw" : 0,
+      "tmax" : 1,
+      "tstart" : 1,
+      "type" : "Maelstrom of War",
+      "wincond" : "Achieve as many Tactical Objectives as possible. Maximum amount of Active Tactical Objectives is based on the round Number. At the start of a player's turn, they must generate Tactical Objectives until their Active Tactical Objectives equal the round number."
+    },
+    "-KQubxuyi8MFkTU88xds" : {
+      "date" : 1473083597004,
+      "descrip" : "Set up 6 Objective Markers. Draw Tactical Objectives at the beginning of your first turn.",
+      "id" : 1010,
+      "kp" : false,
+      "kpname" : "None",
+      "name" : "The Spoils of War",
+      "omystery" : "true",
+      "oqtymax" : "6",
+      "oqtymin" : "6",
+      "ovalues" : [ {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      } ],
+      "tdiscard" : 0,
+      "tdraw" : 0,
+      "tmax" : 3,
+      "tstart" : 3,
+      "type" : "Maelstrom of War",
+      "wincond" : "Achieve as many Tactical Objectives as possible. If at the start of the turn a player has fewer than 3 Active Tactical Objectives, they must generate enough to equal 3 Active Tactical Objectives.<BR/> <b>Precious Cargo:</b> Players cannot discard Active <i>Secure Objective X</i> Tactical Objectives. They must be completed! <BR /><b>Steal the Loot:</b> Players can complete and claim any Active Tactical Objective with the name <i>Secure Objective X</i>, even if it belongs to an enemy player. All Active Tactical Objectives can be completed by any player no matter who the owner of the Tactical Objective is.."
+    },
+    "-KQucCDFWNXYwV2rFBy5" : {
+      "date" : 1473083659676,
+      "descrip" : "Set up 6 Objective Markers. Draw Tactical Objectives at the beginning of your first turn.",
+      "id" : 1011,
+      "kp" : false,
+      "kpname" : "None",
+      "name" : "Cloak & Shadows",
+      "omystery" : "true",
+      "oqtymax" : "6",
+      "oqtymin" : "6",
+      "ovalues" : [ {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      } ],
+      "tdiscard" : 0,
+      "tdraw" : 0,
+      "tmax" : 3,
+      "tstart" : 3,
+      "type" : "Maelstrom of War",
+      "wincond" : "Achieve as many Tactical Objectives as possible. If at the start of the turn a player has fewer than 3 Active Tactical Objectives, they must generate enough to equal 3 Active Tactical Objectives. All generated Tactical Objectives are to be kept secret and should not be revealed to opponents until they have been achieved."
+    },
+    "-KQucXzrnOWpZPO5nBGK" : {
+      "date" : 1473083748872,
+      "descrip" : "Set up 6 Objective Markers. Draw Tactical Objectives at the beginning of your first turn.",
+      "id" : 1012,
+      "kp" : false,
+      "kpname" : "None",
+      "name" : "Deadlock",
+      "omystery" : "true",
+      "oqtymax" : "6",
+      "oqtymin" : "6",
+      "ovalues" : [ {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      }, {
+        "value" : 1
+      } ],
+      "tdiscard" : 0,
+      "tdraw" : 0,
+      "tmax" : 6,
+      "tstart" : 6,
+      "type" : "Maelstrom of War",
+      "wincond" : "Achieve as many Tactical Objectives as possible. At the start of your round you must discard any cards over the maximum Active Tactical Objectives. The formula to work out the maximum hand allowed is <BR />7 - Round Number. (E.g Round 4 can only have 3 Active Tactical Objectives). If a player has less Active Tactical Objectives than the maximum allowed, they must generate Tactical Objectives until they equal the maximum allowed."
+    }
+  },
   "defaultdeck" : {
     "-KQpuvuXqEh-o0uvgKk_" : {
       "carddescription" : "Score 1 Victory Point if you control Objective Marker 1 at the end of your turn.",

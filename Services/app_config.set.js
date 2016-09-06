@@ -24,5 +24,6 @@ grimApp.config(function ($mdIconProvider) {
         .icon('username', 'fonts/icons/account-settings-variant.svg', 24)
         .icon('user', 'fonts/icons/account.svg', 24)
         .icon('plus', 'fonts/icons/plus-box.svg', 24)
-        .icon('minus', 'fonts/icons/minus-box.svg', 24);
+        .icon('minus', 'fonts/icons/minus-box.svg', 24)
+        .icon('droll', 'fonts/icons/dice-roll.svg', 24);
 });
