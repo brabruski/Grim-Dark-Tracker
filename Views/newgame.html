@@ -35,27 +35,27 @@
                                 </md-checkbox>
                             </div>
                             <div flex-gt-sm="50">
-                                <md-checkbox ng-model="options.flyers" aria-label="Checkbox Flyer">
+                                <md-checkbox ng-if="checktacticalMission()" ng-model="options.flyers" aria-label="Checkbox Flyer">
                                     Flyers - Enemy
                                 </md-checkbox>
                             </div>
                             <div flex-gt-sm="50">
-                                <md-checkbox ng-model="options.fortification" aria-label="Checkbox Fortification">
+                                <md-checkbox ng-if="checktacticalMission()" ng-model="options.fortification" aria-label="Checkbox Fortification">
                                     Fortifications - Enemy
                                 </md-checkbox>
                             </div>
                             <div flex-gt-sm="50">
-                                <md-checkbox ng-model="options.vehicles" aria-label="Checkbox Vehicles">
+                                <md-checkbox ng-if="checktacticalMission()" ng-model="options.vehicles" aria-label="Checkbox Vehicles">
                                     Vehicles - Enemy
                                 </md-checkbox>
                             </div>
                             <div flex-gt-sm="50">
-                                <md-checkbox ng-model="options.psykersene" aria-label="Checkbox Enemy Psykers">
+                                <md-checkbox ng-if="checktacticalMission()" ng-model="options.psykersene" aria-label="Checkbox Enemy Psykers">
                                     Psykers / Sorcerers - Enemy
                                 </md-checkbox>
                             </div>
                             <div flex-gt-sm="50">
-                                <md-checkbox ng-model="options.psykersfriend" aria-label="Checkbox Friendly Psykers">
+                                <md-checkbox ng-if="checktacticalMission()" ng-model="options.psykersfriend" aria-label="Checkbox Friendly Psykers">
                                     Psykers / Sorcerers - Friend
                                 </md-checkbox>
                             </div>

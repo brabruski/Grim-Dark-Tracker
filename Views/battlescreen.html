@@ -1,22 +1,81 @@
-﻿<div layout-gt-sm="row" layout="column" layout-align="center center" flex>
-    <div flex-gt-sm="40" layout-align="center center" flex>
+﻿<md-toolbar md-scroll-shrink class="md-accent md-hue-3" layout="row" layout-align="space-around center" flex ng-cloak>
+    <div class="left"><h5>{{ missionName }}</h5></div>
+    <h5>{{armyName}}</h5>
+    <h5>Current Round: {{ roundNum }}</h5>
+    <h5>Victory Points: {{ main.vicpoints }}</h5>
+</md-toolbar>
+
+<div layout-gt-sm="row" layout="column" layout-align="center center" flex>
+    <div flex-gt-xs="95" layout-align="center center" flex>
         <md-content>
             <md-tabs md-dynamic-height layout-align="center center">
                 <md-tab label="Battle">
+                    <div layout="column" layout-align="center center" flex>
+                        <md-content class="md-padding">
+                            <p ng-if="roundNum === 0 && !main.completed">{{ startMsg }}</p>
+                            <div layout="column" layout-align="center center">
+                                <h1 ng-if="main.completed">Game is Over!</h1>
+                                <div layout="row" layout-align="center center" ng-if="roundNum > 0">
+                                    <md-button ng-class="checkToggle(0)" ng-click="toggleSecCond(0)">Slay the Warlord</md-button>
+                                    <md-button ng-class="checkToggle(1)" ng-click="toggleSecCond(1)">First Blood</md-button>
+                                    <md-button ng-class="checkToggle(2)" ng-click="toggleSecCond(2)">Line Breaker</md-button>
+                                </div>
+                                <h2 ng-if="main.completed">Your Final Victory Points: {{ main.vicpoints }}</h2>
+                            </div>
+                            
+                            <div ng-include="whichBattle()" layout="column" layout-align="center center"></div>
+                            <div layout="row" layout-align="center center">
+                                <md-button ng-if="roundNum > 0 && roundNum < 6 && !main.completed" class="md-raised md-accent" ng-click="endRound($event)">End Round</md-button>
+                                <md-button ng-if="roundNum === 6 && !main.completed" class="md-raised md-accent" ng-click="endRound($event)">End Game</md-button>
+                                <md-button ng-if="roundNum === 0 && !main.completed" class="md-raised md-accent" ng-click="startGame()" ng-disabled="checkObjExist()">Start Game</md-button>
+                                <md-button ng-if="main.completed && main.victCount" class="md-raised md-accent" ng-href="#/newgame">Start a New Game</md-button>
+                            </div>
+                        </md-content>
+                    </div>
+                </md-tab>
+                <md-tab label="Primary Conditions">
                     <md-content class="md-padding">
-                        <h3 class="md-display-2">The Battle</h3>
-                        <p></p>
+                        <h4 class="md-display-1">Primary Conditions</h4>
+                        <p>{{wincond}}</p>
                     </md-content>
                 </md-tab>
-                <md-tab label="Winning Conditions">
+                <md-tab label="Secondary Conditions">
                     <md-content class="md-padding">
-                        <h3 class="md-display-2">Winning Conditions</h3>
-
+                        <h4 class="md-display-1">Secondary Conditions</h4>
+                        <md-list flex>
+                            <md-list-item class="md-2-line" ng-click="null">
+                                <div class="md-list-item-text" layout="column">
+                                    <h3>Slay the Warlord:</h3>
+                                    <p>If the enemy army has a Warlord and they have been removed as a casualty, gain 1 Victory Point.</p>
+                                </div>
+                            </md-list-item>
+                            <md-divider></md-divider>
+                            <md-list-item class="md-2-line" ng-click="null">
+                                <div class="md-list-item-text" layout="column">
+                                    <h3>First Blood:</h3>
+                                    <p>This first unit, of any kind, to be completely destroyed during the game is worth 1 Victory Point to the opposing player at the end of the game. If 2 units are destroyed at the same time (for example, at the same Initiative step in the Assault phase), then both players receive 1 Victory Point at the end of the game (in addition to any other Victory Points gained during the mission).</p>
+                                </div>
+                            </md-list-item>
+                            <md-divider></md-divider>
+                            <md-list-item class="md-2-line" ng-click="null">
+                                <div class="md-list-item-text" layout="column">
+                                    <h3>Line Breaker:</h3>
+                                    <p>If, at the end of the game you have at least one model, from one or more scoring units, completely within 12" of the enemy's table edge, you score 1 Victory Point.</p>
+                                </div>
+                            </md-list-item>
+                            <md-divider></md-divider>
+                            <md-list-item class="md-2-line" ng-click="null">
+                                <div class="md-list-item-text" layout="column">
+                                    <h3>Conjured Units:</h3>
+                                    <p>Certain psychic powers or special rules will allow you to "conjure" a model or unit and make it appear on the battlefield. Conjured units count as part of the army of the player that has conjured them as far as Victory Conditions and the rules for Victory Points are concerned. If a model is conjured several times (i.e. it is reused after being removed as a casualty), then it counts as a different unit for victory point purposes each time it is used.</p>
+                                </div>
+                            </md-list-item>
+                        </md-list>
                     </md-content>
                 </md-tab>
-                <md-tab label="Mysterious Objectives">
+                <md-tab label="Mysterious Objectives" ng-if="main.mystObjective">
                     <md-content class="md-padding">
-                        <h3 class="md-display-2">Mysterious Objectives</h3>
+                        <h4 class="md-display-2">Mysterious Objectives</h4>
                         <md-list flex>
                             <md-list-item class="md-2-line" ng-click="null">
                                 <div class="md-list-item-text" layout="column">
@@ -65,5 +124,5 @@
                 </md-tab>
             </md-tabs>
         </md-content>
-        </div>
     </div>
+</div>

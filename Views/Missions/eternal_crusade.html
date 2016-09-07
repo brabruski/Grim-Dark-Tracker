@@ -1,0 +1,50 @@
+﻿<div ng-controller="CrusadeController">
+    <div ng-if="roundNum > 0 && !main.completed">
+        <h4><b>Objectives in Play: </b>{{ main.objCount }}</h4>
+    </div>
+    <!--Objective Quantity-->
+    <div layout="row" class="md-inline-form" flex layout-align="center center" ng-show="!main.objExist">
+        <form name="objectiveAmount" ng-submit="addObjectiveQty()" novalidate>
+            <md-dialogue-content>
+                <div layout="column" layout-padding layout-align="center center">
+                        <h4>Enter in Objective Marker Amount</h4>
+                    <md-button class="md-accent md-fab" ng-click="generateObjective()">
+                        <md-tooltip md-direction="top">Generate Objectives</md-tooltip>
+                        <md-icon md-svg-icon="droll"></md-icon>
+                    </md-button>
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex>
+                            <label>Quantity of Objectives:</label>
+                            <input type="number" name="objquantity" ng-model="missionObjQty" min="{{objMin}}" max="{{objMax}}" required>
+                        </md-input-container>
+                        <md-button type="submit" class="md-fab md-mini md-primary" aria-label="Save">
+                            <md-tooltip md-direction="top">Save Objective Quantity</md-tooltip>
+                            <md-icon md-svg-icon="save"></md-icon>
+                        </md-button>
+                    </div>
+                </div>
+            </md-dialogue-content>
+        </form>
+    </div>
+
+    <!--Objective Control-->
+    <div layout="row" class="md-inline-form" flex layout-align="center center" ng-show="main.completed">
+        <form name="objectiveAmount" ng-submit="finalObjectiveQty()" novalidate>
+            <md-dialogue-content>
+                <div layout="column" layout-padding layout-align="center" ng-hide="main.victCount">
+                    <h5>How many Objectives Do You Control?</h5>
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex>
+                            <label>Objectives Controlled:</label>
+                            <input type="number" name="finalObjquantity" ng-model="finalObjQty" min="0" max="{{objMax}}" required>
+                        </md-input-container>
+                        <md-button type="submit" class="md-fab md-mini md-primary" aria-label="Save" ng-disable="main.victCount">
+                            <md-tooltip md-direction="top">Submit</md-tooltip>
+                            <md-icon md-svg-icon="save"></md-icon>
+                        </md-button>
+                    </div>
+                </div>
+            </md-dialogue-content>
+        </form>
+    </div>
+</div>

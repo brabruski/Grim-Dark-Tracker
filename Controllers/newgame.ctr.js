@@ -14,6 +14,14 @@
         missionDetails.$loaded(function () {
             $scope.games = missionDetails;
             $scope.gameSelected = $scope.games[0];
+
+            $scope.checktacticalMission = function () {
+                if ($scope.gameSelected.type === 'Eternal War') {
+                    return false;
+                } else {
+                    return true;
+                }
+            };
         });
 
 
@@ -44,7 +52,14 @@
                     options: $scope.options,
                     deck: deckEdited,
                     army: $scope.armySelected,
-                    battle: $scope.gameSelected
+                    battle: $scope.gameSelected,
+                    vicpoints: 0,
+                    round: 0,
+                    objExist: false,
+                    objCount: 0,
+                    lineBreak: false,
+                    firstBlood: false,
+                    slayWarLord: false
                 };
 
                 battleDetails.$add(newBattleDetails).then(function () {
@@ -56,6 +71,6 @@
             });
 
 
-        };
+        };        
 
     }]);
