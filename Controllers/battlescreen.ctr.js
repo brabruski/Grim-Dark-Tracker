@@ -1,5 +1,5 @@
-﻿grimApp.controller('BattleController', ['$scope', '$firebaseAuth', '$firebaseArray', '$location', 'Config', 'DBServices', 'MaterialFunc', 'NewContentFactory', '$timeout',
-    function ($scope, $firebaseAuth, $firebaseArray, $location, Config, DBServices, MaterialFunc, NewContentFactory, $timeout) {
+﻿grimApp.controller('BattleController', ['$scope', '$firebaseAuth', '$firebaseArray', '$location', 'Config', 'DBServices', 'MaterialFunc', 'NewContentFactory', 'BattleFactory', '$timeout',
+    function ($scope, $firebaseAuth, $firebaseArray, $location, Config, DBServices, MaterialFunc, NewContentFactory, BattleFactory, $timeout) {
 
         battleDetails = DBServices.savedGame();
         var index = 0;
@@ -10,33 +10,22 @@
             $scope.armyName = battleDetails[index].army.deckname;
             $scope.startMsg = battleDetails[index].battle.descrip;
             $scope.objMin = battleDetails[index].battle.oqtymin;
-            $scope.objMax = battleDetails[index].battle.oqtymax;
-            $scope.mystObject = battleDetails[index].battle.omystery;
+            $scope.objMax = battleDetails[index].battle.oqtymax;            
             //$scope.main for child Controller to access
-
-            $scope.main = {};
-            $scope.main.vicpoints = battleDetails[index].vicpoints;
-            $scope.main.completed = battleDetails[index].completed;
-            $scope.main.objExist = battleDetails[index].objExist;
-            $scope.main.objCount = battleDetails[index].objCount;
-            $scope.main.lineBreak = battleDetails[index].lineBreak;
-            $scope.main.firstBlood = battleDetails[index].firstBlood;
-            $scope.main.slayWarLord = battleDetails[index].slayWarLord;            
+            $scope.main = BattleFactory.battleOptions(battleDetails[index]);
         });
 
         $scope.checkObjExist = function () {
-            if ($scope.main.objExist) {
-                return false;
-            } else {
-                return true;
-            }
+            return BattleFactory.checkIfExists($scope.main.objExist);
         };
 
         $scope.startGame = function () {
             if (battleDetails[index].objExist) {
                 $scope.roundNum++;
                 battleDetails[index].round = $scope.roundNum;
+                battleDetails[index].started = true;
                 battleDetails.$save(index);
+                $scope.main.gameStarted = battleDetails[index].started;
             } else {
                 addSuccessMsg = 'You Still Need To Complete The Pre-Game Setup.';
                 $scope.showSimpleToast(addSuccessMsg);
@@ -45,8 +34,8 @@
 
         $scope.endRound = function (ev) {
             if (battleDetails[index].completed === false) {
-                if ($scope.roundNum < 6) {
-                    if ($scope.roundNum > 3) {
+                if ($scope.roundNum < 7) {
+                    if ($scope.roundNum > 4) {
                         MaterialFunc.checkEndGame(ev).then(function () {
                             $scope.roundNum++;
                             battleDetails[index].round = $scope.roundNum;
@@ -79,7 +68,7 @@
                 }
             }
 
-            if (battleDetails[index].completed === false && $scope.roundNum === 6) {
+            if (battleDetails[index].completed === false && $scope.roundNum === 7) {
                 battleDetails[index].completed = true;
                 battleDetails.$save(index);
                 $scope.main.completed = battleDetails[index].completed;
@@ -130,55 +119,22 @@
             }
         };
 
-            $scope.checkToggle = function (num) {
-                if (num === 0) {
-                    if (battleDetails[index].slayWarLord) {
-                        return 'md-warn';
-                    } else {
-                        return 'md-raised md-primary';
-                    }
-                }
+        $scope.checkToggle = function (num) {
+            var secClass = BattleFactory.secObjClass(battleDetails[index], num);
+            return secClass;
+        };
 
-                if (num === 1) {
-                    if (battleDetails[index].firstBlood) {
-                        return 'md-warn';
-                    } else {
-                        return 'md-raised md-primary';
-                    }
-                }
+        //ngInclude each Mission Type where needed
+        $scope.whichBattle = function () {
+            var selectBattle = BattleFactory.battleSelect(battleDetails[index].battle.name);
+            return selectBattle;
+        };
 
-                if (num === 2) {
-                    if (battleDetails[index].lineBreak) {
-                        return 'md-warn';
-                    } else {
-                        return 'md-raised md-primary';
-                    }
-                }
-
-            };
-
-            //ngInclude each Mission Type where needed
-            $scope.whichBattle = function () {
-                switch (battleDetails[index].battle.name) {
-                    case 'Crusade':
-                        return 'Views/Missions/eternal_crusade.html';
-                    default:
-                        break;
-                }
-            };
-
-            //toast functions
-            $scope.toastPosition = MaterialFunc.toastDetails();
-
-            $scope.getToastPosition = function () {
-                return MaterialFunc.getToastPos(MaterialFunc.toastDetails());
-            };
-
-            $scope.showSimpleToast = function (message) {
-                var pinTo = $scope.getToastPosition();
-                return MaterialFunc.showToast(pinTo, message);
-            };
+        //toast functions
+        $scope.showSimpleToast = function (message) {
+            return MaterialFunc.showToast(message);
+        };
 
 
 
-        }]);
+    }]);

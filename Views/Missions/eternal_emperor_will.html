@@ -1,0 +1,28 @@
+﻿<div ng-controller="EmpWillController" layout="column" layout-align="center center">
+    <div ng-if="roundNum > 0 && !main.completed">
+        <h4><b>Objectives in Play: </b>{{ main.objCount }}</h4>
+    </div>
+    <div ng-if="main.completed">
+        <h4><b>Victory Points from Objectives: </b> {{ main.finalVicPoints }}</h4>
+    </div>
+    <!--Objective Control-->
+    <div layout="row" class="md-inline-form" flex layout-align="center center" ng-show="main.completed">
+        <form name="objectiveAmount" ng-submit="finalObjectiveQty()" novalidate>
+            <md-dialogue-content>
+                <div layout="column" layout-padding layout-align="center" ng-hide="main.victCount">
+                    <h5>How many Objectives Do You Control?</h5>
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex>
+                            <label>Objectives Controlled:</label>
+                            <input type="number" name="finalObjquantity" ng-model="finalObjQty" min="0" max="{{objMax}}" required>
+                        </md-input-container>
+                        <md-button type="submit" class="md-raised md-warn" aria-label="Save" ng-disable="main.victCount">
+                            <md-tooltip md-direction="top">Submit Objective Amount</md-tooltip>
+                            <md-icon md-svg-icon="save"></md-icon>Submit
+                        </md-button>
+                    </div>
+                </div>
+            </md-dialogue-content>
+        </form>
+    </div>
+</div>

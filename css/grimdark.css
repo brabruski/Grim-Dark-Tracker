@@ -4,7 +4,7 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;   
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1, h2, h3, h4 {
@@ -48,7 +48,16 @@ legend code {
 
 md-tabs {
     background: #f6f6f6;
-    border: 1px solid #e1e1e1; }
+    border: 1px solid #e1e1e1; 
+    padding: 1em;
+}
 
 md-tabs md-tabs-wrapper {
-      background: white; }
+      background: white; 
+
+}
+
+.feedback-bar {
+    font-size: 0.8rem;
+  
+}

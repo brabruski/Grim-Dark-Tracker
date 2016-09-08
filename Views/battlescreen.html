@@ -1,34 +1,34 @@
-﻿<md-toolbar md-scroll-shrink class="md-accent md-hue-3" layout="row" layout-align="space-around center" flex ng-cloak>
-    <div class="left"><h5>{{ missionName }}</h5></div>
-    <h5>{{armyName}}</h5>
-    <h5>Current Round: {{ roundNum }}</h5>
-    <h5>Victory Points: {{ main.vicpoints }}</h5>
+﻿<md-toolbar md-scroll-shrink class="md-accent md-hue-3 feedback-bar" layout="row" layout-align="space-around start" layout-padding layout-wrap flex ng-cloak>
+    <div flex="20"><h5>{{ missionName }}</h5></div>
+    <div flex="20"><h5>{{armyName}}</h5></div>
+    <div flex="20"><h5>Round: {{ roundNum }}</h5></div>
+    <div flex="20"><h5>Victory Points: {{ main.vicpoints }}</h5></div>
 </md-toolbar>
 
-<div layout-gt-sm="row" layout="column" layout-align="center center" flex>
-    <div flex-gt-xs="95" layout-align="center center" flex>
+<div layout-gt-sm="row" layout="column" layout-wrap layout-align="center center" flex>
+    <div layout-align="center center" flex>
         <md-content>
             <md-tabs md-dynamic-height layout-align="center center">
-                <md-tab label="Battle">
-                    <div layout="column" layout-align="center center" flex>
+                <md-tab label="Battle" layout-padding>
+                    <div layout="column" layout-align="center center" flex layout-margin>
                         <md-content class="md-padding">
                             <p ng-if="roundNum === 0 && !main.completed">{{ startMsg }}</p>
                             <div layout="column" layout-align="center center">
                                 <h1 ng-if="main.completed">Game is Over!</h1>
-                                <div layout="row" layout-align="center center" ng-if="roundNum > 0">
+                                <div layout-gt-sm="row" layout-align="start center" layout-wrap ng-if="roundNum > 0">
                                     <md-button ng-class="checkToggle(0)" ng-click="toggleSecCond(0)">Slay the Warlord</md-button>
                                     <md-button ng-class="checkToggle(1)" ng-click="toggleSecCond(1)">First Blood</md-button>
                                     <md-button ng-class="checkToggle(2)" ng-click="toggleSecCond(2)">Line Breaker</md-button>
                                 </div>
                                 <h2 ng-if="main.completed">Your Final Victory Points: {{ main.vicpoints }}</h2>
                             </div>
-                            
-                            <div ng-include="whichBattle()" layout="column" layout-align="center center"></div>
+
+                            <div ng-include="whichBattle()" layout="column" layout-align="center center" flex></div>
                             <div layout="row" layout-align="center center">
-                                <md-button ng-if="roundNum > 0 && roundNum < 6 && !main.completed" class="md-raised md-accent" ng-click="endRound($event)">End Round</md-button>
-                                <md-button ng-if="roundNum === 6 && !main.completed" class="md-raised md-accent" ng-click="endRound($event)">End Game</md-button>
-                                <md-button ng-if="roundNum === 0 && !main.completed" class="md-raised md-accent" ng-click="startGame()" ng-disabled="checkObjExist()">Start Game</md-button>
-                                <md-button ng-if="main.completed && main.victCount" class="md-raised md-accent" ng-href="#/newgame">Start a New Game</md-button>
+                                <md-button ng-if="roundNum > 0 && roundNum < 7 && !main.completed" class="md-raised md-warn" ng-click="endRound($event)">End Round</md-button>
+                                <md-button ng-if="roundNum === 7 && !main.completed" class="md-raised md-warn" ng-click="endRound($event)">End Game</md-button>
+                                <md-button ng-if="roundNum === 0 && !main.completed" class="md-raised md-warn" ng-click="startGame()" ng-disabled="checkObjExist()">Start Game</md-button>
+                                <md-button ng-if="main.completed && main.victCount" class="md-raised md-warn" ng-href="#/newgame">Start a New Game</md-button>
                             </div>
                         </md-content>
                     </div>
@@ -42,7 +42,7 @@
                 <md-tab label="Secondary Conditions">
                     <md-content class="md-padding">
                         <h4 class="md-display-1">Secondary Conditions</h4>
-                        <md-list flex>
+                        <md-list flex layout-padding>
                             <md-list-item class="md-2-line" ng-click="null">
                                 <div class="md-list-item-text" layout="column">
                                     <h3>Slay the Warlord:</h3>
@@ -73,7 +73,7 @@
                         </md-list>
                     </md-content>
                 </md-tab>
-                <md-tab label="Mysterious Objectives" ng-if="main.mystObjective">
+                <md-tab label="Mysterious Objectives" ng-if="!main.mystObjective">
                     <md-content class="md-padding">
                         <h4 class="md-display-2">Mysterious Objectives</h4>
                         <md-list flex>

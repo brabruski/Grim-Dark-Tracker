@@ -1,0 +1,19 @@
+﻿<div ng-controller="RelicController" layout="column" layout-align="center center">
+    <div ng-if="roundNum > 0 && !main.completed">
+        <h4><b>Objectives in Play: </b>{{ main.objCount }}</h4>
+    </div>
+    <!--Objective Control-->
+    <div layout="row" class="md-inline-form" flex layout-align="center center" ng-show="main.completed">
+        <div layout="column" layout-padding layout-align="center" ng-hide="main.victCount">
+            <h5>Do You Control The Relic?</h5>
+            <div layout="row">
+                <md-button ng-click="relicYes()" class="md-raised md-primary" aria-label="Relic Owned">
+                    <md-icon md-svg-icon="thumbup"></md-icon>Yes
+                </md-button>
+                <md-button ng-click="relicNo()" class="md-raised md-warn" aria-label="Relic Not Owned">
+                    <md-icon md-svg-icon="thumbdown"></md-icon>No
+                </md-button>
+            </div>
+        </div>
+    </div>
+</div>

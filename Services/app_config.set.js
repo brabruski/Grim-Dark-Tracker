@@ -1,8 +1,8 @@
 ﻿//Define Theme defaults
 grimApp.config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-      .primaryPalette('lime')
-      .accentPalette('blue')
+      .primaryPalette('deep-purple')
+      .accentPalette('blue-grey')
     .warnPalette('red');
 });
 
@@ -26,5 +26,8 @@ grimApp.config(function ($mdIconProvider) {
         .icon('plus', 'fonts/icons/plus-box.svg', 24)
         .icon('minus', 'fonts/icons/minus-box.svg', 24)
         .icon('droll', 'fonts/icons/dice-roll.svg', 24)
-        .icon('save', 'fonts/icons/content-save.svg', 24);
+        .icon('save', 'fonts/icons/content-save.svg', 24)
+        .icon('skull', 'fonts/icons/skull.svg', 24)
+        .icon('thumbup', 'fonts/icons/thumb-up.svg', 24)
+        .icon('thumbdown', 'fonts/icons/thumb-down.svg', 24);
 });

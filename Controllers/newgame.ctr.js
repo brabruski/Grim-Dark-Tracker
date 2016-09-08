@@ -59,7 +59,8 @@
                     objCount: 0,
                     lineBreak: false,
                     firstBlood: false,
-                    slayWarLord: false
+                    slayWarLord: false,
+                    started: false
                 };
 
                 battleDetails.$add(newBattleDetails).then(function () {

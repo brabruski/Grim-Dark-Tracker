@@ -12,7 +12,7 @@
                             <md-option ng-value="game" ng-repeat="game in games" aria-label="{{game.name}}">{{ game.type }} - {{ game.name }}</md-option>
                         </md-select>
                     </md-input-container>
-                    <md-button class="md-accent md-fab" ng-click="generateMission()">
+                    <md-button class="md-warn md-icon-button" ng-click="generateMission()">
                         <md-tooltip md-direction="top">Roll for Random Mission</md-tooltip>
                         <md-icon md-svg-icon="droll"></md-icon>
                     </md-button>
@@ -27,7 +27,7 @@
                 </div>
                 <div layout-gt-sm="row" flex="60">
                     <fieldset class="standard">
-                        <legend>Select All Options That Don't apply To This Battle</legend>
+                        <legend>Select All Options That Don't Apply To The Selected Battle</legend>
                         <div layout-wrap layout-gt-sm="row" flex="70">
                             <div flex-gt-sm="50">
                                 <md-checkbox ng-model="options.mysteriousobj" aria-label="Checkbox Mysterious Objectives">
