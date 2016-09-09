@@ -13,6 +13,8 @@
                 battleOpt.firstBlood = db.firstBlood;
                 battleOpt.slayWarLord = db.slayWarLord;
                 battleOpt.gameStarted = db.started;
+                battleOpt.victCount = db.victCount;
+                battleOpt.finalVicPoints = db.objScoreCount;
                 return battleOpt;
             },
 

@@ -31,18 +31,21 @@
         };
 
         //Set object for options
-        $scope.options = {};
-        $scope.options.mysteriousobj = false;
-        $scope.options.flyers = false;
-        $scope.options.fortification = false;
-        $scope.options.vehicles = false;
-        $scope.options.psykersene = false;
-        $scope.options.psykersfriend = false;
+        $scope.options = NewContentFactory.tactOptions();
+        
+
+        //commander traits
+        $scope.traits = NewContentFactory.traitOptions();
+        $scope.traitList = NewContentFactory.traitList();
+        $scope.traitSelected = $scope.traitList[0];
+        
 
         $scope.addGame = function () {
             var deck = NewContentFactory.createBattleDeck($scope.armySelected, defaultDeck);
             var deckEdited = NewContentFactory.applyOptions(deck, $scope.options);
             var battleDetails = DBServices.savedGame(); //link new battle to user saved battles
+            $scope.traits = NewContentFactory.traitModify($scope.traitSelected);
+      
 
             battleDetails.$loaded(function () {
                 battleDetails.$remove(0);
@@ -50,6 +53,7 @@
                 var newBattleDetails = {
                     completed: false,
                     options: $scope.options,
+                    traits: $scope.traits,
                     deck: deckEdited,
                     army: $scope.armySelected,
                     battle: $scope.gameSelected,

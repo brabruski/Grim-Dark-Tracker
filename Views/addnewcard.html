@@ -9,7 +9,7 @@
                     <md-input-container class="md-block" flex>
                         <label>Deck to Add to:</label>
                         <md-select ng-model="deckSelected" ng-model-options="{trackBy: '$value.deckname'}" aria-label="Deck Selection">
-                            <md-option ng-value="deck" ng-repeat="deck in decks" aria-label="{{deck.deckname}}">{{ deck.deckname }}</md-option>
+                            <md-option ng-value="deck" ng-repeat="deck in decks | orderBy: '-deckname'" aria-label="{{deck.deckname}}">{{ deck.deckname }}</md-option>
                         </md-select>
                     </md-input-container>
                 </div>

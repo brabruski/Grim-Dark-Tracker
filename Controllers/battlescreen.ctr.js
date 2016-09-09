@@ -1,8 +1,8 @@
 ﻿grimApp.controller('BattleController', ['$scope', '$firebaseAuth', '$firebaseArray', '$location', 'Config', 'DBServices', 'MaterialFunc', 'NewContentFactory', 'BattleFactory', '$timeout',
     function ($scope, $firebaseAuth, $firebaseArray, $location, Config, DBServices, MaterialFunc, NewContentFactory, BattleFactory, $timeout) {
-
         battleDetails = DBServices.savedGame();
         var index = 0;
+
         battleDetails.$loaded(function () {
             $scope.roundNum = battleDetails[index].round;
             $scope.wincond = battleDetails[index].battle.wincond;
@@ -10,7 +10,7 @@
             $scope.armyName = battleDetails[index].army.deckname;
             $scope.startMsg = battleDetails[index].battle.descrip;
             $scope.objMin = battleDetails[index].battle.oqtymin;
-            $scope.objMax = battleDetails[index].battle.oqtymax;            
+            $scope.objMax = battleDetails[index].battle.oqtymax;
             //$scope.main for child Controller to access
             $scope.main = BattleFactory.battleOptions(battleDetails[index]);
         });

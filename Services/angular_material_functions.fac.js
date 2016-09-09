@@ -47,7 +47,7 @@ function ($mdToast, $mdDialog, $mdMedia) {
         checkEndGame: function (ev) {
             var confirm = $mdDialog.confirm()
           .title('Check to see if the Game Ends!')
-          .textContent('Roll a D6. At Round 5, on a 3+ the Game Ends. At Round 6, the Game Ends on a 4+. The Game will end automatically at round 7. If you the Game ends you will no longer be able to gain Victory Points.')
+          .textContent('Roll a D6. At Round 5, on a 3+ the Game Ends. At Round 6, the Game Ends on a 4+. The Game will end automatically at round 7. If the Game ends you will no longer be able to gain Victory Points.')
           .ariaLabel('Does the Game End')
           .targetEvent(ev)
           .ok('Game Continues')

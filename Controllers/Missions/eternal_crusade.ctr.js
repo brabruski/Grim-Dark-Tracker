@@ -5,9 +5,9 @@
         battleDetails.$loaded(function () {
             $scope.main.objCount = battleDetails[index].objCount;
             $scope.main.victCount = battleDetails[index].victCount;
+            $scope.missionObjQty = battleDetails[index].objCount;
         });
 
-        $scope.missionObjQty = 0;
         $scope.finalObjQty = 0;
         var index = 0;
 

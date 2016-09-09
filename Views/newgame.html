@@ -21,10 +21,20 @@
                     <md-input-container class="md-block" flex>
                         <label>Army:</label>
                         <md-select ng-model="armySelected" ng-model-options="{trackBy: '$value.deckname'}" aria-label="Army Selection">
-                            <md-option ng-value="army" ng-repeat="army in armyDeck" aria-label="{{army.deckname}}">{{ army.deckname }}</md-option>
+                            <md-option ng-value="army" ng-repeat="army in armyDeck | orderBy: '-deckname'" aria-label="{{army.deckname}}">{{ army.deckname }}</md-option>
                         </md-select>
                     </md-input-container>
                 </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex>
+                        <label>Select Warlord Options If Applicable:</label>
+                        <md-select ng-model="traitSelected" ng-model-options="{trackBy: '$value.id'}" aria-label="Trait Selection">
+                            <md-option ng-value="{{trait}}" ng-repeat="trait in traitList" aria-label="{{trait.traitname}}">{{ trait.traitname }}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
                 <div layout-gt-sm="row" flex="60">
                     <fieldset class="standard">
                         <legend>Select All Options That Don't Apply To The Selected Battle</legend>

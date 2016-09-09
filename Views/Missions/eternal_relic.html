@@ -3,8 +3,8 @@
         <h4><b>Objectives in Play: </b>{{ main.objCount }}</h4>
     </div>
     <!--Objective Control-->
-    <div layout="row" class="md-inline-form" flex layout-align="center center" ng-show="main.completed">
-        <div layout="column" layout-padding layout-align="center" ng-hide="main.victCount">
+    <div layout="row" class="md-inline-form" flex layout-align="center center" ng-if="main.completed">
+        <div layout="column" layout-padding layout-align="center" ng-if="!main.victCount">
             <h5>Do You Control The Relic?</h5>
             <div layout="row">
                 <md-button ng-click="relicYes()" class="md-raised md-primary" aria-label="Relic Owned">

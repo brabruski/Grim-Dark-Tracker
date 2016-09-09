@@ -6,7 +6,7 @@
         deckDetails.$loaded().then(function (data) {
             $scope.decks = deckDetails;
             $scope.deckSelected = $scope.decks[0];
-            $scope.maxpoints = NewContentFactory.maxNumber(6);
+            $scope.maxpoints = NewContentFactory.maxNumber(7);
             $scope.minpoints = NewContentFactory.maxNumber(4);
         });
 
@@ -72,15 +72,8 @@
         }; //end add function
 
         //toast functions
-        $scope.toastPosition = MaterialFunc.toastDetails();
-
-        $scope.getToastPosition = function () {
-            return MaterialFunc.getToastPos(MaterialFunc.toastDetails());
-        };
-
         $scope.showSimpleToast = function (message) {
-            var pinTo = $scope.getToastPosition();
-            return MaterialFunc.showToast(pinTo, message);
+            return MaterialFunc.showToast(message);
         };
 
 

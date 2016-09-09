@@ -67,15 +67,8 @@
         }; //end add function
 
         //toast functions
-        $scope.toastPosition = MaterialFunc.toastDetails();
-
-        $scope.getToastPosition = function () {
-            return MaterialFunc.getToastPos(MaterialFunc.toastDetails());
-        };
-
         $scope.showSimpleToast = function (message) {
-            var pinTo = $scope.getToastPosition();
-            return MaterialFunc.showToast(pinTo, message);
+            return MaterialFunc.showToast(message);
         };
 
 

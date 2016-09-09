@@ -94,6 +94,62 @@
                     deckFiltered = ncObj.cycleDeck(deckFiltered, 'psykmy');
                 }
                 return deckFiltered;
+            },
+
+            tactOptions: function () {
+                var tactOpt = {};
+                tactOpt.mysteriousobj = false;
+                tactOpt.flyers = false;
+                tactOpt.fortification = false;
+                tactOpt.vehicles = false;
+                tactOpt.psykersene = false;
+                tactOpt.psykersfriend = false;
+                return tactOpt;
+            },
+
+            traitOptions: function () {
+                var cmdrOpt = {};
+                cmdrOpt.none = false;
+                cmdrOpt.legendaryFght = false;
+                cmdrOpt.tactGenious = false;
+                cmdrOpt.mastInterference = false;
+                cmdrOpt.wellPrep = false;
+                cmdrOpt.forPlan = false;
+                cmdrOpt.leadByEg = false;
+                return cmdrOpt;
+            },
+
+            traitList: function () {
+                var traitOpt = [
+                { id: 0, traitname: 'None' },
+                { id: 1, traitname: 'Personal Trait: Legendary Fighter' },
+                { id: 2, traitname: 'Tactical Trait: Tactical Genious' },
+                { id: 3, traitname: 'Tactical Trait: Master of Interference' },
+                { id: 4, traitname: 'Tactical Trait: Well Prepared' },
+                { id: 5, traitname: 'Tactical Trait: Forward Planning' },
+                { id: 6, traitname: 'Tactical Trait: Lead by Example' }
+                ];
+                return traitOpt;
+            },
+
+            traitModify: function (selectedItem) {
+                var traitObjMod = ncObj.traitOptions();
+                if (selectedItem.id === 0) {
+                    traitObjMod.none = true;                    
+                } else if (selectedItem.id === 1) {
+                    traitObjMod.legendaryFght = true;                    
+                } else if (selectedItem.id === 2) {
+                    traitObjMod.tactGenious = true;                    
+                } else if (selectedItem.id === 3) {
+                    traitObjMod.mastInterference = true;                    
+                } else if (selectedItem.id === 4) {
+                    traitObjMod.wellPrep = true;                   
+                } else if (selectedItem.id === 5) {
+                    traitObjMod.forPlan = true;                    
+                } else if (selectedItem.id === 6) {
+                    traitObjMod.leadByEg = true;
+                }
+                return traitObjMod;
             }
 
         };

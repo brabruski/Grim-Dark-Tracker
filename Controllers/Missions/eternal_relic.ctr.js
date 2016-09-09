@@ -1,7 +1,6 @@
 ﻿grimApp.controller('RelicController', ['$scope', '$firebaseAuth', '$firebaseArray', '$location', 'Config', 'DBServices', 'MaterialFunc', 'NewContentFactory', 'BattleFactory', '$timeout',
     function ($scope, $firebaseAuth, $firebaseArray, $location, Config, DBServices, MaterialFunc, NewContentFactory, BattleFactory, $timeout) {
         battleDetails = DBServices.savedGame();
-        $scope.relicOwned = false;
         battleDetails.$loaded(function () {
             battleDetails[index].objExist = true;
             $scope.main.objExist = battleDetails[index].objExist;
