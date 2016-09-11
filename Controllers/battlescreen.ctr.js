@@ -33,8 +33,11 @@
         };
 
         $scope.endRound = function (ev) {
-            if (battleDetails[index].completed === false) {
+            if (!battleDetails[index].completed) {
                 if ($scope.roundNum < 7) {
+                    battleDetails[index] = BattleFactory.endRoundCleanUp(battleDetails[index]);
+                    $scope.main.discards = battleDetails[index].battle.tdiscard;
+                    $scope.main.draws = battleDetails[index].battle.tdraw;
                     if ($scope.roundNum > 4) {
                         MaterialFunc.checkEndGame(ev).then(function () {
                             $scope.roundNum++;
@@ -68,7 +71,7 @@
                 }
             }
 
-            if (battleDetails[index].completed === false && $scope.roundNum === 7) {
+            if (!battleDetails[index].completed && $scope.roundNum === 7) {
                 battleDetails[index].completed = true;
                 battleDetails.$save(index);
                 $scope.main.completed = battleDetails[index].completed;

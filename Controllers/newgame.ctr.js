@@ -49,7 +49,6 @@
 
             battleDetails.$loaded(function () {
                 battleDetails.$remove(0);
-
                 var newBattleDetails = {
                     completed: false,
                     options: $scope.options,
@@ -63,8 +62,8 @@
                     objCount: 0,
                     lineBreak: false,
                     firstBlood: false,
-                    slayWarLord: false,
-                    started: false
+                    warlordAlive: true,
+                    started: false,
                 };
 
                 battleDetails.$add(newBattleDetails).then(function () {

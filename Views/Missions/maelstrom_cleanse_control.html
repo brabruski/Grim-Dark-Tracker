@@ -1,0 +1,59 @@
+﻿<div ng-controller="CleanseControlController" layout="column" layout-align="center center" flex>
+
+    <md-list class="deckDetails" layout="row" layout-wrap layout-padding layout-align="center center" ng-hide="!main.gameStarted">
+        <md-list-item>
+            <p>Dicards: {{ main.discards }} </p>
+        </md-list-item>
+        <md-list-item>
+            <p>Draws: {{ main.draws }} </p>
+        </md-list-item>
+        <md-list-item>
+            <p>Deck Left: {{ deckLeft }} </p>
+        </md-list-item>
+        <md-divider></md-divider>
+    </md-list>
+    <div layout="row" layout-wrap layout-padding layout-align="center center" ng-hide="!main.gameStarted">
+        <md-button class="md-raised md-primary md-hue-2" ng-click="drawCard()" ng-if="!main.completed" ng-disabled="checkDraws()">
+            <md-icon md-svg-icon="draw"></md-icon>
+            Draw Objective
+            <md-icon md-svg-icon="draw"></md-icon>
+        </md-button>
+        <md-button ng-class="checkToggle(3)" ng-click="warlordDeath()" ng-if="!main.completed">Warlord Destroyed</md-button>
+    </div>
+
+    <div ng-hide="!main.gameStarted">
+        <md-content>
+            <div layout='row' layout-xs="column" layout-wrap layout-align="center center">
+                <md-card ng-repeat="(key, card) in activeDeck" layout="column" aria-label="{{ card.cardname }} Card" flex-gt-sm="40" flex-sm="80">
+                    <md-card-header>
+                        <md-card-header-text>
+                            <span class="md-title">{{ card.cardname }}</span>
+                            <span class="md-subhead italics">{{ card.cnumber }}</span>
+                        </md-card-header-text>
+                    </md-card-header>
+                    <md-card-content ng-class="getCardColour()">
+                        <md-card-title-text>
+                            <p class="smallFont">{{card.carddescription}}</p>
+                        </md-card-title-text>
+
+                        <div layout="row" layout-align="end center">
+                            <md-button class="md-warn md-mini" ng-click="discardItem($event, card.id)" aria-label="Discard Card">
+                                <md-tooltip>Discard Card</md-tooltip>
+                                <md-icon md-svg-icon="delete" class="icwhite"></md-icon>
+                            </md-button>
+                            <md-button class="md-primary md-mini" ng-click="claimObj($event, card)" aria-label="Claim Objective">
+                                <md-tooltip>Claim Objective</md-tooltip>
+                                <md-icon md-svg-icon="claim" class="icwhite"></md-icon>
+                            </md-button>
+                        </div>
+                    </md-card-content>
+                    <md-card-title>
+                        <md-card-title-text layout-align="end center">
+                            <span class="md-headline">{{card.ctype}}</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                </md-card>
+            </div>
+        </md-content>
+    </div>
+</div>

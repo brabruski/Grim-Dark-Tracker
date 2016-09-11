@@ -1,16 +1,16 @@
-﻿<md-toolbar md-scroll-shrink class="md-accent md-hue-3 feedback-bar" layout="row" layout-align="space-around start" layout-padding layout-wrap flex ng-cloak>
+﻿<md-toolbar md-scroll-shrink class="md-accent md-hue-3 feedback-bar" layout="row" layout-align="space-around start" layout-padding layout-wrap>
     <div flex="20"><h5>{{ missionName }}</h5></div>
     <div flex="20"><h5>{{armyName}}</h5></div>
     <div flex="20"><h5>Round: {{ roundNum }}</h5></div>
     <div flex="20"><h5>Victory Points: {{ main.vicpoints }}</h5></div>
 </md-toolbar>
 
-<div layout-gt-sm="row" layout="column" layout-wrap layout-align="center center" flex>
+<div layout-gt-sm="row" layout="column" layout-wrap layout-align="center center">
     <div layout-align="center center" flex>
         <md-content>
             <md-tabs md-dynamic-height layout-align="center center">
-                <md-tab label="Battle" layout-padding>
-                    <div layout="column" layout-align="center center" flex layout-margin>
+                <md-tab label="Battle">
+                    <div layout="column" layout-margin>
                         <md-content class="md-padding">
                             <p ng-if="roundNum === 0 && !main.completed">{{ startMsg }}</p>
                             <div layout="column" layout-align="center center">

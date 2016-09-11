@@ -2,14 +2,9 @@
 <html lang="en" ng-app="grimApp">
 <!--
 To Do List:
-        create factory to handle game logic
-        create controller for game in progress
-        create controller for loading existing game
-
-    Styling
-    Style Cards
-    Style ui feedack elements
-
+            Add 2 functions on cards for discarding and claiming objective
+    Bugs:
+    Visula - 1st card is small on display.
 -->
 <head>
     <meta charset="utf-8">
@@ -57,6 +52,7 @@ To Do List:
     <script src="Controllers/Missions/eternal_big_guns.ctr.js"></script>
     <script src="Controllers/Missions/eternal_emperor_will.ctr.js"></script>
     <script src="Controllers/Missions/eternal_relic.ctr.js"></script>
+    <script src="Controllers/Missions/maelstrom_cleanse_control.ctr.js"></script>
 
     <!--Custom Directives-->
     <script src="Services/password_validation.dir.js"></script>
@@ -71,7 +67,7 @@ To Do List:
 <body>
     <div layout="column">
         <nav ng-include="'Views/nav.html'" ng-cloak></nav>
-        <main flex ng-view ng-cloak>
+        <main ng-view ng-cloak>
         </main>
         <span flex></span>
         <footer flex="none" ng-include="'Views/footer.html'" ng-cloak></footer>

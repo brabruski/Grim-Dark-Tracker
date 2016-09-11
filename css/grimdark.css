@@ -28,36 +28,95 @@ p {
 /*Fieldset Styles*/
 
 fieldset.standard {
-  border-style: solid;
-  border-width: 1px; 
-
+    border-style: solid;
+    border-width: 1px;
 }
 
 legend {
-  color: #3F51B5; 
-
+    color: #3F51B5;
 }
 
-legend code {
-  color: #3F51B5;
-  font-weight: normal; 
+    legend code {
+        color: #3F51B5;
+        font-weight: normal;
+    }
 
+/*Card Styles*/
+md-card-header, md-card-title {
+    background: #232226; /* Old browsers */
+    background: -moz-linear-gradient(top, #232226 0%, #000000 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #232226 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #232226 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#232226', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+    color: white;
 }
+
+md-card-title-text .md-headline {
+    font-size: 0.9em;
+}
+
+md-card-header-text, md-card.md-default-theme md-card-header md-card-header-text .md-subhead, md-card md-card-header md-card-header-text .md-subhead {
+    color: white;
+    font-style: italic;
+}
+
+md-card-content {
+    font-size: 0.8em;
+    line-height: 1.7em;
+}
+
+.red {
+    border-top: 4px solid #990000;
+    border-bottom: 4px solid #990000;
+}
+
+.blue {
+    border-top: 4px solid #3300FF;
+    border-bottom: 4px solid #3300FF;
+}
+
+.green {
+    border-top: 4px solid #006600;
+    border-bottom: 4px solid #006600;
+}
+
+.yellow {
+    border-top: 4px solid #CCCC00;
+    border-bottom: 4px solid #CCCC00;
+}
+
+.orange {
+    border-top: 4px solid #FF6600;
+    border-bottom: 4px solid #FF6600;
+}
+
+.purple {
+    border-top: 4px solid #6600CC;
+    border-bottom: 4px solid #6600CC;
+}
+
+.grey {
+    border-top: 4px solid #6699CC;
+    border-bottom: 4px solid #6699CC;
+}
+
 
 /*Tab Styles*/
 
 md-tabs {
     background: #f6f6f6;
-    border: 1px solid #e1e1e1; 
+    border: 1px solid #e1e1e1;
     padding: 1em;
 }
 
-md-tabs md-tabs-wrapper {
-      background: white; 
-
-}
+    md-tabs md-tabs-wrapper {
+        background: white;
+    }
 
 .feedback-bar {
     font-size: 0.8rem;
-  
+}
+
+.deckDetails {
+    font-size: 0.8rem;
 }
