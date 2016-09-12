@@ -18,6 +18,7 @@
                 return battleOpt;
             },
 
+            //toggles button class based on whether clicked or not
             secObjClass: function (db, x) {
                 if (x === 0) {
                     if (db.slayWarLord) {
@@ -50,6 +51,7 @@
 
             },
 
+            //Selects which battle to include in battle window
             battleSelect: function (name) {
                 switch (name) {
                     case 'Crusade':
@@ -71,13 +73,70 @@
                 }
             },
 
-            endRoundCleanUp: function (db) {
-                if (db.battle.id === '1007') {
-                    console.log('1007')
+            //Adjusts victory points depending on secondary conditions achieved
+            secCondComplete: function (db, num) {
+                if (num === 0) {
+                    if (db.slayWarLord) {
+                        db.slayWarLord = !db.slayWarLord;
+                        db.vicpoints--;
+                    } else {
+                        db.slayWarLord = true;
+                        db.vicpoints++;
+                    }
                 }
+                if (num === 1) {
+                    if (db.firstBlood) {
+                        db.firstBlood = !db.firstBlood;
+                        db.vicpoints--;
+                    } else {
+                        db.firstBlood = true;
+                        db.vicpoints++;
+                    }
+                }
+                if (num === 2) {
+                    if (db.lineBreak) {
+                        db.lineBreak = !db.lineBreak;
+                        db.vicpoints--;
+                    } else {
+                        db.lineBreak = true;
+                        db.vicpoints++;
+                    }
+                }
+
                 return db;
             },
 
+            //check if the round can end based on draws left and if active deck is too big
+            isEndRoundValid: function (db) {
+                var roundEnd;
+                if (db.battle.tdraw > 0) {
+                    roundEnd = true;
+                } else {
+                    roundEnd = false;
+                }
+                if (db.activeDeck) {
+                    if (!roundEnd && db.activeDeck.length > db.maxDeck) {
+                        roundEnd = true;
+                    }
+                }
+                return roundEnd;
+            },
+
+            //specific cleanup needed depending on mission selected and round currently on
+            endRoundCleanUp: function (db) {
+                if (db.battle.id === 1007) {
+                    db.battle.tdiscard = batObj.checkDiscardsWl(db, 1);
+                    db = batObj.checkGameDraws(db, 3);
+                }
+
+                return db;
+            },
+
+            startGameWarlordMods: function (db) {
+
+            },
+
+            //returns true or false to disable a button if conditions aren't met
             checkIfExists: function (item) {
                 if (item) {
                     return false;
@@ -86,6 +145,7 @@
                 }
             },
 
+            //returns true or false if all actions haven't been completed. I.e card draws
             checkItemZero: function (num) {
                 if (num > 0) {
                     return false;
@@ -94,6 +154,7 @@
                 }
             },
 
+            //returns true or false if warlord is alive or dead for other values to be adjusted depending on Warlord bonuses
             checkWarlordAlive: function (db) {
                 var index = 0;
                 if (db.warlordAlive) {
@@ -104,35 +165,65 @@
                 return db;
             },
 
+            //If warlord has Tactical Genious, adjusts discard amount based on if they are alive or not
             checkDiscardsWl: function (db, amount) {
-                if (db.traits.tactGenious && db.warlordAlive) {
-                    amount++;
-                } else {
-                    if (db.traits.tactGenious && !db.warlordAlive && amount > 0) {
+                if (amount > 0) {
+                    if (db.traits.tactGenious && db.warlordAlive) {
+                        amount++;
+                    }
+
+                    if (db.traits.tactGenious && !db.warlordAlive) {
                         amount--;
                     }
                 }
                 return amount;
             },
 
-            checkGameDiscards: function (db, gameDraw) {
+            //discards card from active deck
+            discardCard: function (cardId, db) {
+                var indexofId;
+                for (i = 0; i < db.activeDeck.length; i++) {
+                    if (cardId === db.activeDeck[i].id) {
+                        indexofId = i;
+                    }
+                }
+                db.activeDeck.splice(indexofId, 1);
+                return db;
+            },
+
+            //adjusts allowed discards in a round based on size of active deck, warlord traits and game type
+            discardAmount: function (db) {
+                var deficit = 0;
+                if (db.activeDeck.length > db.maxDraw) {
+                    deficit = db.activeDeck.length - db.maxDraw;
+                }
+                db.battle.tdiscard = db.battle.tdiscard + deficit -1;
+                return db.battle.tdiscard;
+            },
+
+            //adjusts how many cards can be draw based on game type and warlord traits
+            checkGameDraws: function (db) {
+                var gameDraw = db.battle.tmax;
+                if (db.round <= 1 && db.traits.wellPrep) {
+                    gameDraw++;
+                }
                 if (db.activeDeck) {
                     db.battle.tdraw = gameDraw - db.activeDeck.length;
-
                 } else {
                     db.battle.tdraw = gameDraw;
                 }
                 return db;
             },
 
-            pickCard: function (db, maxActiveDeck) {
+            //Randomly selects and removes a card out of the main deck and puts it into active deck
+            pickCard: function (db) {
                 var random = Math.floor(Math.random() * db.deck.length);
                 if (!db.activeDeck) {
                     var aDeck = [];
                 } else {
                     aDeck = db.activeDeck;
                 }
-                if (aDeck.length < maxActiveDeck && db.deck.length > 0) {
+                if (db.deck.length > 0) {
                     var randomCard = db.deck[random];
                     aDeck.push(randomCard);
                     db.deck.splice(random, 1);
@@ -141,6 +232,7 @@
                 return db;
             },
 
+            //returns colour class for cards based on army being played
             getCardColour: function (name) {
                 switch (name) {
                     case 'red':

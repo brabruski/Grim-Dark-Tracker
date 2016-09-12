@@ -54,6 +54,18 @@ function ($mdToast, $mdDialog, $mdMedia) {
           .cancel('Game Ends');
             var dialogue = $mdDialog.show(confirm);
             return dialogue;
+        },
+
+        confirmDiscard: function (ev) {
+            var confirm = $mdDialog.confirm()
+          .title('Would You Like To Discard This Card?')
+          .textContent('Once discarded, this Tactical Objective will be unavailable for the rest of the game.')
+          .ariaLabel('Confirm card Discard')
+          .targetEvent(ev)
+          .ok('Discard')
+          .cancel('Cancel');
+            var dialogue = $mdDialog.show(confirm);
+            return dialogue;
         }
     };
     return matObj;

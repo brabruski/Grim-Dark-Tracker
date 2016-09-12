@@ -124,9 +124,9 @@
                 { id: 0, traitname: 'None' },
                 { id: 1, traitname: 'Personal Trait: Legendary Fighter' },
                 { id: 2, traitname: 'Tactical Trait: Tactical Genious' },
-                { id: 3, traitname: 'Tactical Trait: Master of Interference' },
+              /*  { id: 3, traitname: 'Tactical Trait: Master of Interference' }, */
                 { id: 4, traitname: 'Tactical Trait: Well Prepared' },
-                { id: 5, traitname: 'Tactical Trait: Forward Planning' },
+              /*  { id: 5, traitname: 'Tactical Trait: Forward Planning' }, */
                 { id: 6, traitname: 'Tactical Trait: Lead by Example' }
                 ];
                 return traitOpt;

@@ -37,7 +37,7 @@
                         </md-card-title-text>
 
                         <div layout="row" layout-align="end center">
-                            <md-button class="md-warn md-mini" ng-click="discardItem($event, card.id)" aria-label="Discard Card">
+                            <md-button class="md-warn md-mini" ng-click="discardItem($event, card.id)" ng-disabled="checkZero()" aria-label="Discard Card">
                                 <md-tooltip>Discard Card</md-tooltip>
                                 <md-icon md-svg-icon="delete" class="icwhite"></md-icon>
                             </md-button>

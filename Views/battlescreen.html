@@ -25,7 +25,7 @@
 
                             <div ng-include="whichBattle()" layout="column" layout-align="center center" flex></div>
                             <div layout="row" layout-align="center center">
-                                <md-button ng-if="roundNum > 0 && roundNum < 7 && !main.completed" class="md-raised md-warn" ng-click="endRound($event)">End Round</md-button>
+                                <md-button ng-if="roundNum > 0 && roundNum < 7 && !main.completed" class="md-raised md-warn" ng-click="endRound($event)" ng-disabled="checkEndRound()">End Round</md-button>
                                 <md-button ng-if="roundNum === 7 && !main.completed" class="md-raised md-warn" ng-click="endRound($event)">End Game</md-button>
                                 <md-button ng-if="roundNum === 0 && !main.completed" class="md-raised md-warn" ng-click="startGame()" ng-disabled="checkObjExist()">Start Game</md-button>
                                 <md-button ng-if="main.completed && main.victCount" class="md-raised md-warn" ng-href="#/newgame">Start a New Game</md-button>
