@@ -66,6 +66,40 @@ function ($mdToast, $mdDialog, $mdMedia) {
           .cancel('Cancel');
             var dialogue = $mdDialog.show(confirm);
             return dialogue;
+        },
+
+        confirmClaim: function (ev, item) {
+            var confirm = $mdDialog.show({
+                controller: ObjectiveClaimController,
+                templateUrl: 'Views/Missions/claim_obj.tmpl.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                preserveScope: true,
+                clickOutsideToClose: true,
+                // fullscreen: $scope.customFullscreen, // Only for -xs, -sm breakpoints.
+                locals: {
+                    card: item
+                }
+            });
+
+            function ObjectiveClaimController($scope, $mdDialog, card) {
+                $scope.card = card;
+
+                $scope.hide = function () {
+                    $mdDialog.hide();
+                };
+
+                $scope.cancel = function () {
+                    $mdDialog.cancel();
+                };
+
+                $scope.claim = function (amount) {
+                    $mdDialog.hide(amount);
+                };
+
+            }
+
+            return confirm;
         }
     };
     return matObj;

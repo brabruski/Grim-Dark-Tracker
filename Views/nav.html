@@ -20,12 +20,12 @@
                 <md-button class="md-primary" ng-if="currentUser" ng-href="#/battle" ng-click="close()">Continue Battle</md-button>
                 <md-button class="md-primary" ng-if="currentUser" ng-href="#/newgame" ng-click="close()">New Battle</md-button>
                 <md-button class="md-primary" ng-if="!currentUser" ng-href="#/login" ng-click="close()">Login</md-button>
-                <md-button class="md-primary" ng-if="!currentUser" ng-href="#/register" ng-click="close()">Register</md-button>
-                <md-button class="md-primary" ng-if="currentUser.admin" ng-href="#/addnew" ng-click="close()">New Card</md-button>
-                <md-button class="md-primary" ng-if="currentUser.admin" ng-href="#/addnewd" ng-click="close()">New Deck</md-button>
-                <md-button class="md-primary" ng-if="currentUser.admin" ng-href="#/addnewbat" ng-click="close()">New Battle Type</md-button>
-                <md-button class="md-primary" ng-if="currentUser.admin" ng-href="#/adddefd" ng-click="close()">Add to Default Deck</md-button>
-                <md-button class="md-primary" ng-if="currentUser" ng-href="#/login" ng-click="logout()">Logout</md-button>
+                <md-button class="md-accent" ng-if="!currentUser" ng-href="#/register" ng-click="close()">Register</md-button>
+                <md-button class="md-warn" ng-if="currentUser.admin" ng-href="#/addnew" ng-click="close()">New Card</md-button>
+                <md-button class="md-warn" ng-if="currentUser.admin" ng-href="#/addnewd" ng-click="close()">New Deck</md-button>
+                <md-button class="md-warn" ng-if="currentUser.admin" ng-href="#/addnewbat" ng-click="close()">New Battle Type</md-button>
+                <md-button class="md-warn" ng-if="currentUser.admin" ng-href="#/adddefd" ng-click="close()">Add to Default Deck</md-button>
+                <md-button class="md-accent" ng-if="currentUser" ng-href="#/login" ng-click="logout()">Logout</md-button>
             </md-content>
         </md-sidenav>
     </div>

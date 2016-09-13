@@ -31,5 +31,6 @@ grimApp.config(function ($mdIconProvider) {
         .icon('thumbup', 'fonts/icons/thumb-up.svg', 24)
         .icon('thumbdown', 'fonts/icons/thumb-down.svg', 24)
         .icon('draw', 'fonts/icons/cards-outline.svg', 24)
-        .icon('claim', 'fonts/icons/star-circle.svg', 24);
+        .icon('claim', 'fonts/icons/star-circle.svg', 24)
+        .icon('close', 'fonts/icons/close.svg', 24);
 });

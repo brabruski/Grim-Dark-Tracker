@@ -63,7 +63,7 @@
                     lineBreak: false,
                     firstBlood: false,
                     warlordAlive: true,
-                    started: false,
+                    started: false
                 };
 
                 battleDetails.$add(newBattleDetails).then(function () {

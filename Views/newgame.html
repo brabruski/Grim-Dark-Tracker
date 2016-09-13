@@ -26,7 +26,7 @@
                     </md-input-container>
                 </div>
 
-                <div layout-gt-sm="row">
+                <div layout-gt-sm="row" ng-if="checktacticalMission()">
                     <md-input-container class="md-block" flex>
                         <label>Select Warlord Options If Applicable:</label>
                         <md-select ng-model="traitSelected" ng-model-options="{trackBy: '$value.id'}" aria-label="Trait Selection">

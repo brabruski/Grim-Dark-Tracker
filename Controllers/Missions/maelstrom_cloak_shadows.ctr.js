@@ -1,4 +1,4 @@
-﻿grimApp.controller('CleanseControlController', ['$scope', '$firebaseArray', '$location', 'Config', 'DBServices', 'MaterialFunc', 'NewContentFactory', 'BattleFactory', '$timeout',
+﻿grimApp.controller('CloakShadowsController', ['$scope', '$firebaseArray', '$location', 'Config', 'DBServices', 'MaterialFunc', 'NewContentFactory', 'BattleFactory', '$timeout',
     function ($scope, $firebaseArray, $location, Config, DBServices, MaterialFunc, NewContentFactory, BattleFactory, $timeout) {
         battleDetails = DBServices.savedGame();
         var index = 0;

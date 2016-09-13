@@ -68,6 +68,8 @@
                         return 'Views/Missions/eternal_relic.html';
                     case 'Cleanse and Control':
                         return 'Views/Missions/maelstrom_cleanse_control.html';
+                    case 'Cloak & Shadows':
+                        return 'Views/Missions/maelstrom_cloak_shadows.html';
                     default:
                         return 'Views/Missions/under_construction.html';
                 }
@@ -125,6 +127,10 @@
             //specific cleanup needed depending on mission selected and round currently on
             endRoundCleanUp: function (db) {
                 if (db.battle.id === 1007) {
+                    db.battle.tdiscard = batObj.checkDiscardsWl(db, 1);
+                    db = batObj.checkGameDraws(db, 3);
+                }
+                if (db.battle.id === 1011) {
                     db.battle.tdiscard = batObj.checkDiscardsWl(db, 1);
                     db = batObj.checkGameDraws(db, 3);
                 }
