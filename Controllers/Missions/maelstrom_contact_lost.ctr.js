@@ -1,5 +1,5 @@
-﻿grimApp.controller('CleanseControlController', ['$scope', '$firebaseArray', '$location', 'Config', 'DBServices', 'MaterialFunc', 'NewContentFactory', 'BattleFactory', '$timeout',
-    function ($scope, $firebaseArray, $location, Config, DBServices, MaterialFunc, NewContentFactory, BattleFactory, $timeout) {
+﻿grimApp.controller('ContactLostController', ['$scope', '$firebaseAuth', '$firebaseArray', '$location', 'Config', 'DBServices', 'MaterialFunc', 'NewContentFactory', 'BattleFactory', '$timeout',
+    function ($scope, $firebaseAuth, $firebaseArray, $location, Config, DBServices, MaterialFunc, NewContentFactory, BattleFactory, $timeout) {
         battleDetails = DBServices.savedGame();
         var index = 0;
 
@@ -8,6 +8,7 @@
         battleDetails.$loaded(function () {
             battleDetails[index].inPlay = {};
             battleDetails[index].objExist = true;
+            $scope.objSelected = 1;
             $scope.activeDeck = battleDetails[index].activeDeck;
             $scope.warlordAlive = battleDetails[index].warlordAlive;
             if (battleDetails[index].deck) {
@@ -15,7 +16,7 @@
             } else {
                 $scope.deckLeft = 0;
             }
-            battleDetails[index] = BattleFactory.checkGameDraws(battleDetails[index]);
+            battleDetails[index] = BattleFactory.checkStartDraws(battleDetails[index]);
             battleDetails[index].battle.tdiscard = BattleFactory.checkDiscardsWl(battleDetails[index], battleDetails[index].battle.tdiscard);
             battleDetails.$save(index);
             $scope.main.discards = battleDetails[index].battle.tdiscard;
@@ -41,15 +42,13 @@
 
 
         $scope.drawCard = function () {
-            if (battleDetails[index].deck) {
+            if (battleDetails[index].deck && battleDetails[index].battle.tdraw > 0) {
                 battleDetails[index] = BattleFactory.pickCard(battleDetails[index]);
-                if (battleDetails[index].battle.tdraw > 0) {
-                    battleDetails[index] = BattleFactory.checkGameDraws(battleDetails[index]);
-                    battleDetails.$save(index);
-                    $scope.main.draws = battleDetails[index].battle.tdraw;
-                    $scope.deckLeft = battleDetails[index].deck.length;
-                    $scope.activeDeck = battleDetails[index].activeDeck;
-                }
+                battleDetails[index].battle.tdraw--;
+                battleDetails.$save(index);
+                $scope.main.draws = battleDetails[index].battle.tdraw;
+                $scope.deckLeft = battleDetails[index].deck.length;
+                $scope.activeDeck = battleDetails[index].activeDeck;
             } else {
                 $scope.main.draws = 0;
                 $scope.deckLeft = 0;
@@ -59,7 +58,13 @@
 
 
         $scope.checkDraws = function () {
-            if (battleDetails[index].deck) {
+            var deckMax;
+            if (battleDetails[index].activeDeck) {
+                deckMax = battleDetails[index].battle.tmax - battleDetails[index].activeDeck.length;
+            } else {
+                deckMax = battleDetails[index].battle.tmax;
+            }
+            if (battleDetails[index].deck && deckMax > 0) {
                 return BattleFactory.checkItemZero(battleDetails[index].battle.tdraw);
             } else {
                 return true;
@@ -91,6 +96,14 @@
             return BattleFactory.checkItemZero($scope.main.discards);
         };
 
+        $scope.checkRound = function () {
+            if (battleDetails[index].round > 1) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
         $scope.claimObj = function (ev, item) {
             //pass through info to dialog controller
             MaterialFunc.confirmClaim(ev, item).then(function (amount) {
@@ -112,5 +125,11 @@
             return MaterialFunc.showToast(message);
         };
 
-
+        $scope.adjustTDraw = function () {
+            battleDetails[index] = BattleFactory.checkObjGameDraws(battleDetails[index], $scope.objSelected);
+            battleDetails[index].objExist = true;
+            battleDetails.$save(index);
+            $scope.main.draws = battleDetails[index].battle.tdraw;
+            $scope.main.objExist = battleDetails[index].objExist;
+        };
     }]);

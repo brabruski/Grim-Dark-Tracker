@@ -40,14 +40,18 @@
                             if ($scope.roundNum > 4) {
                                 MaterialFunc.checkEndGame(ev).then(function () {
                                     $scope.roundNum++;
-                                    battleDetails[index].round = $scope.roundNum;
-                                    battleDetails.$save(index);
+                                    battleDetails[index] = BattleFactory.endRoundCleanUp(battleDetails[index]);
+                                    battleDetails[index].round = $scope.roundNum;                                    
                                     addSuccessMsg = 'Round Advanced';
                                     $scope.showSimpleToast(addSuccessMsg);
+                                    battleDetails.$save(index);
+                                    $scope.main.discards = battleDetails[index].battle.tdiscard;
+                                    $scope.main.draws = battleDetails[index].battle.tdraw;
+                                    $scope.main.completed = battleDetails[index].completed;
+                                    $scope.main.objExist = battleDetails[index].objExist;
                                 }, function () {
                                     battleDetails[index].completed = true;
                                     battleDetails.$save(index);
-                                    $scope.main.completed = battleDetails[index].completed;
                                     addSuccessMsg = 'Game Has Ended';
                                     $scope.showSimpleToast(addSuccessMsg);
                                 });
@@ -56,18 +60,19 @@
                                     $scope.roundNum++;
                                     battleDetails[index] = BattleFactory.endRoundCleanUp(battleDetails[index]);
                                     battleDetails[index].round = $scope.roundNum;
-                                    battleDetails.$save(index);
                                     addSuccessMsg = 'Round Advanced';
                                     $scope.showSimpleToast(addSuccessMsg);
+                                    battleDetails.$save(index);
                                     $scope.main.discards = battleDetails[index].battle.tdiscard;
                                     $scope.main.draws = battleDetails[index].battle.tdraw;
+                                    $scope.main.completed = battleDetails[index].completed;
+                                    $scope.main.objExist = battleDetails[index].objExist;
                                 }, function () {
                                     addSuccessMsg = 'Cancelled';
                                     $scope.showSimpleToast(addSuccessMsg);
                                 });
-                            }
+                            }                            
                         } else {
-                            $scope.main.completed = battleDetails[index].completed;
                             addSuccessMsg = 'Game is Over';
                             $scope.showSimpleToast(addSuccessMsg);
                         }
@@ -75,11 +80,10 @@
 
                     if (!battleDetails[index].completed && $scope.roundNum === 7) {
                         battleDetails[index].completed = true;
-                        battleDetails.$save(index);
-                        $scope.main.completed = battleDetails[index].completed;
                         addSuccessMsg = 'Game is Over';
                         $scope.showSimpleToast(addSuccessMsg);
-                    }
+                    }                    
+
                 }; //end endRound function
 
                 $scope.checkEndRound = function () {

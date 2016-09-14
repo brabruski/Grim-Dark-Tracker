@@ -1,6 +1,7 @@
 ﻿grimApp.factory('BattleFactory',
-    ['$rootScope', '$firebaseAuth', '$firebaseObject',
-    function ($rootScope, $firebaseAuth, $firebaseObject) {
+    ['$rootScope', '$firebaseAuth', '$firebaseObject', '$firebaseArray',
+    function ($rootScope, $firebaseAuth, $firebaseObject, $firebaseArray) {
+
         var batObj = {
             battleOptions: function (db) {
                 var battleOpt = {};
@@ -68,6 +69,8 @@
                         return 'Views/Missions/eternal_relic.html';
                     case 'Cleanse and Control':
                         return 'Views/Missions/maelstrom_cleanse_control.html';
+                    case 'Contact Lost':
+                        return 'Views/Missions/maelstrom_contact_lost.html';
                     case 'Cloak & Shadows':
                         return 'Views/Missions/maelstrom_cloak_shadows.html';
                     default:
@@ -122,17 +125,21 @@
                     }
                 }
                 return roundEnd;
-            },
+            },            
 
             //specific cleanup needed depending on mission selected and round currently on
             endRoundCleanUp: function (db) {
                 if (db.battle.id === 1007) {
                     db.battle.tdiscard = batObj.checkDiscardsWl(db, 1);
-                    db = batObj.checkGameDraws(db, 3);
+                    db = batObj.checkGameDraws(db);
+                }
+                if (db.battle.id === 1008) {
+                    db.battle.tdiscard = batObj.checkDiscardsWl(db, 1);
+                    db.objExist = false;                    
                 }
                 if (db.battle.id === 1011) {
                     db.battle.tdiscard = batObj.checkDiscardsWl(db, 1);
-                    db = batObj.checkGameDraws(db, 3);
+                    db = batObj.checkGameDraws(db);
                 }
 
                 return db;
@@ -200,23 +207,46 @@
             //adjusts allowed discards in a round based on size of active deck, warlord traits and game type
             discardAmount: function (db) {
                 var deficit = 0;
-                if (db.activeDeck.length > db.maxDraw) {
-                    deficit = db.activeDeck.length - db.maxDraw;
+                if (db.activeDeck.length > db.battle.tmax) {
+                    deficit = db.activeDeck.length - db.battle.tmax;
                 }
                 db.battle.tdiscard = db.battle.tdiscard + deficit -1;
                 return db.battle.tdiscard;
             },
 
             //adjusts how many cards can be draw based on game type and warlord traits
-            checkGameDraws: function (db) {
-                var gameDraw = db.battle.tmax;
+            adjustDraw: function (db, drawAmount) {
                 if (db.round <= 1 && db.traits.wellPrep) {
-                    gameDraw++;
+                    drawAmount++;
                 }
                 if (db.activeDeck) {
-                    db.battle.tdraw = gameDraw - db.activeDeck.length;
+                    db.battle.tdraw = drawAmount - db.activeDeck.length;
                 } else {
-                    db.battle.tdraw = gameDraw;
+                    db.battle.tdraw = drawAmount;
+                }
+                return db;
+            },
+
+            checkGameDraws: function (db) {
+                var gameDraw = db.battle.tmax;
+                db = batObj.adjustDraw(db, gameDraw);
+                return db;
+            },
+
+            checkStartDraws: function (db) {
+                var gameDraw = db.battle.tstart;
+                db = batObj.adjustDraw(db, gameDraw);
+                return db;
+            },
+
+            checkObjGameDraws: function (db, obj) {
+                db.battle.tdraw = obj;
+                var activeDeckMax = db.battle.tmax;
+                if (db.activeDeck) {
+                    activeDeckMax = db.battle.tmax - db.activeDeck.length;
+                }
+                if (db.battle.tdraw > activeDeckMax) {
+                    db.battle.tdraw = activeDeckMax;
                 }
                 return db;
             },
