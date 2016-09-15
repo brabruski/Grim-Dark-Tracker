@@ -40,8 +40,8 @@
                             if ($scope.roundNum > 4) {
                                 MaterialFunc.checkEndGame(ev).then(function () {
                                     $scope.roundNum++;
-                                    battleDetails[index] = BattleFactory.endRoundCleanUp(battleDetails[index]);
-                                    battleDetails[index].round = $scope.roundNum;                                    
+                                    battleDetails[index].round = $scope.roundNum;
+                                    battleDetails[index] = BattleFactory.endRoundCleanUp(battleDetails[index]);                                                                        
                                     addSuccessMsg = 'Round Advanced';
                                     $scope.showSimpleToast(addSuccessMsg);
                                     battleDetails.$save(index);
@@ -58,8 +58,8 @@
                             } else {
                                 MaterialFunc.confirmEndRound(ev).then(function () {
                                     $scope.roundNum++;
-                                    battleDetails[index] = BattleFactory.endRoundCleanUp(battleDetails[index]);
                                     battleDetails[index].round = $scope.roundNum;
+                                    battleDetails[index] = BattleFactory.endRoundCleanUp(battleDetails[index]);
                                     addSuccessMsg = 'Round Advanced';
                                     $scope.showSimpleToast(addSuccessMsg);
                                     battleDetails.$save(index);

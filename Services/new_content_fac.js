@@ -96,6 +96,19 @@
                 return deckFiltered;
             },
 
+            applyMissionOptions: function (deckFiltered, mission) {
+                var checkName;
+                if (mission.id === 1010) {
+                    for (i = 0; i < deckFiltered.length; i++) {
+                        checkName = deckFiltered[i].cardname.includes('Secure');
+                        if (checkName) {
+                            deckFiltered[i].minpoint = 0;
+                        }
+                    };
+                }
+                return deckFiltered;
+            },
+
             tactOptions: function () {
                 var tactOpt = {};
                 tactOpt.mysteriousobj = false;

@@ -1,4 +1,4 @@
-﻿<div ng-controller="CleanseControlController" layout="column" layout-align="center center" flex>
+﻿<div ng-controller="DeadlockController" layout="column" layout-align="center center" flex>
 
     <md-list class="deckDetails" layout="row" layout-wrap layout-padding layout-align="center center" ng-hide="!main.gameStarted">
         <md-list-item>
@@ -22,7 +22,7 @@
     </div>
 
     <div ng-hide="!main.gameStarted">
-        <md-content  ng-show="checkDraws()">
+        <md-content ng-show="checkDraws()">
             <div layout='row' layout-xs="column" layout-wrap layout-align="center center">
                 <md-card ng-repeat="(key, card) in activeDeck" layout="column" aria-label="{{ card.cardname }} Card" flex-gt-sm="40" flex-sm="80">
                     <md-card-header>

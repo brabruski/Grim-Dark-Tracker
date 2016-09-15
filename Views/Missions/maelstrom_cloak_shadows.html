@@ -22,7 +22,7 @@
     </div>
 
     <div ng-hide="!main.gameStarted">
-        <md-content>
+        <md-content  ng-show="checkDraws()">
             <div layout='row' layout-xs="column" layout-wrap layout-align="center center">
                 <md-card ng-repeat="(key, card) in activeDeck" layout="column" aria-label="{{ card.cardname }} Card" flex-gt-sm="40" flex-sm="80">
                     <md-card-header>

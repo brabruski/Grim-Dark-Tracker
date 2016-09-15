@@ -73,6 +73,12 @@
                         return 'Views/Missions/maelstrom_contact_lost.html';
                     case 'Cloak & Shadows':
                         return 'Views/Missions/maelstrom_cloak_shadows.html';
+                    case 'Tactical Escalation':
+                        return 'Views/Missions/maelstrom_tactical_escalation.html';
+                    case 'The Spoils of War':
+                        return 'Views/Missions/maelstrom_spoils_war.html';
+                    case 'Deadlock':
+                        return 'Views/Missions/maelstrom_deadlock.html';
                     default:
                         return 'Views/Missions/under_construction.html';
                 }
@@ -120,12 +126,12 @@
                     roundEnd = false;
                 }
                 if (db.activeDeck) {
-                    if (!roundEnd && db.activeDeck.length > db.maxDeck) {
+                    if (!roundEnd && db.activeDeck.length > db.battle.tmax) {
                         roundEnd = true;
                     }
                 }
                 return roundEnd;
-            },            
+            },
 
             //specific cleanup needed depending on mission selected and round currently on
             endRoundCleanUp: function (db) {
@@ -135,10 +141,29 @@
                 }
                 if (db.battle.id === 1008) {
                     db.battle.tdiscard = batObj.checkDiscardsWl(db, 1);
-                    db.objExist = false;                    
+                    db.objExist = false;
+                }
+                if (db.battle.id === 1009) {
+                    db.battle.tdiscard = batObj.checkDiscardsWl(db, 1);
+                    db.battle.tmax = db.round;
+                    db = batObj.checkGameDraws(db);
+                }
+                if (db.battle.id === 1010) {
+                    db.battle.tdiscard = batObj.checkDiscardsWl(db, 1);
+                    db = batObj.checkGameDraws(db);
                 }
                 if (db.battle.id === 1011) {
                     db.battle.tdiscard = batObj.checkDiscardsWl(db, 1);
+                    db = batObj.checkGameDraws(db);
+                }
+                if (db.battle.id === 1012) {
+                    db.battle.tdiscard = batObj.checkDiscardsWl(db, 1);
+                    if (db.round < 7) {
+                        db.battle.tmax = 7 - db.round;
+                    } else {
+                        db.battle.tmax = 1;
+                    }
+                    db.battle.tdiscard = batObj.discardAmount(db);
                     db = batObj.checkGameDraws(db);
                 }
 
@@ -165,6 +190,10 @@
                 } else {
                     return true;
                 }
+            },
+
+            checkItemSecured: function (name) {
+                return name.includes('Secure');
             },
 
             //returns true or false if warlord is alive or dead for other values to be adjusted depending on Warlord bonuses
@@ -206,11 +235,11 @@
 
             //adjusts allowed discards in a round based on size of active deck, warlord traits and game type
             discardAmount: function (db) {
-                var deficit = 0;
+                var deficit = -1;
                 if (db.activeDeck.length > db.battle.tmax) {
                     deficit = db.activeDeck.length - db.battle.tmax;
                 }
-                db.battle.tdiscard = db.battle.tdiscard + deficit -1;
+                db.battle.tdiscard = db.battle.tdiscard + deficit;
                 return db.battle.tdiscard;
             },
 
@@ -223,6 +252,9 @@
                     db.battle.tdraw = drawAmount - db.activeDeck.length;
                 } else {
                     db.battle.tdraw = drawAmount;
+                }
+                if (db.battle.tdraw < 0) {
+                    db.battle.tdraw = 0;
                 }
                 return db;
             },
@@ -265,6 +297,11 @@
                     db.deck.splice(random, 1);
                     db.activeDeck = aDeck;
                 }
+                return db;
+            },
+
+            stealObjective: function (db) {
+                db.vicpoints++;
                 return db;
             },
 

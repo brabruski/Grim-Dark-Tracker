@@ -100,6 +100,18 @@ function ($mdToast, $mdDialog, $mdMedia) {
             }
 
             return confirm;
+        },
+
+        confirmSteal: function (ev) {
+            var confirm = $mdDialog.confirm()
+          .title('Are you Sure?')
+          .textContent('Once you Have Claimed the Opponent\'s Secure Objective, They Must Discard It.')
+          .ariaLabel('Steal Objective')
+          .targetEvent(ev)
+          .ok('Steal')
+          .cancel('Cancel');
+            var dialogue = $mdDialog.show(confirm);
+            return dialogue;
         }
     };
     return matObj;

@@ -43,6 +43,7 @@
         $scope.addGame = function () {
             var deck = NewContentFactory.createBattleDeck($scope.armySelected, defaultDeck);
             var deckEdited = NewContentFactory.applyOptions(deck, $scope.options);
+            deckEdited = NewContentFactory.applyMissionOptions(deckEdited, $scope.gameSelected);
             var battleDetails = DBServices.savedGame(); //link new battle to user saved battles
             $scope.traits = NewContentFactory.traitModify($scope.traitSelected);
       
